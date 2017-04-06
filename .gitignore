@@ -1,0 +1,20 @@
+# General
+.DS_Store
+*.py[cod]
+
+# IntelliJ IDEA
+*.iml
+.idea
+
+# Eclipse
+.classpath
+.project
+.settings
+
+
+# Directories
+/*/.iml
+
+/demo
+/generatetool
+
