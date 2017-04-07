@@ -9,15 +9,25 @@ class ShopService:
     def __init__(self, client):
         self.__client = client
 
-    # 查询店铺信息
     def get_shop(self, shop_id):
+        """
+        查询店铺信息
+        :param shopId:店铺Id
+        """
         return self.__client.call("eleme.shop.getShop", {"shopId": shop_id})
 
-    # 更新店铺基本信息
     def update_shop(self, shop_id, properties):
+        """
+        更新店铺基本信息
+        :param shopId:店铺Id
+        :param properties:店铺属性
+        """
         return self.__client.call("eleme.shop.updateShop", {"shopId": shop_id, "properties": properties})
 
-    # 批量获取店铺简要
     def mget_shop_status(self, shop_ids):
+        """
+        批量获取店铺简要
+        :param shopIds:店铺Id的列表
+        """
         return self.__client.call("eleme.shop.mgetShopStatus", {"shopIds": shop_ids})
 

@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+from sdk.sdk_logging import SDKLog
 class Config:
     __sandbox = False
     # your app_key
@@ -12,51 +13,53 @@ class Config:
 
     __base_url = None
 
+    __log = None
+
     def __init__(self, sandbox, app_key, secret, callback_url=None):
-        Config.__sandbox = sandbox
-        Config.__app_key = app_key
-        Config.__secret = secret
-        Config.__callback_url = callback_url
+        self.__sandbox = sandbox
+        self.__app_key = app_key
+        self.__secret = secret
+        self.__callback_url = callback_url
+        if(self.__log==None):
+            self.__log = SDKLog()
 
-    @staticmethod
-    def get_app_key():
-        return Config.__app_key
+    def get_app_key(self):
+        return self.__app_key
 
-    @staticmethod
-    def set_base_url(base_url):
-        Config.__base_url = base_url
+    def set_base_url(self, base_url):
+        self.__base_url = base_url
 
-    @staticmethod
-    def set_log_path(log_path):
-        Config.__log_path = log_path
 
-    @staticmethod
-    def get_secret():
-        return Config.__secret
+    def get_secret(self):
+        return self.__secret
 
-    @staticmethod
-    def get_callback_url():
-        return Config.__callback_url
+    def get_callback_url(self):
+        return self.__callback_url
 
-    @staticmethod
-    def get_log_path():
-        return Config.__log_path
+    def set_log(self, log):
+        if not(hasattr(log, 'info')):
+            raise Exception (' log not has info method!')
+        if not (hasattr(log, 'error')):
+            raise Exception ('log not has error method!')
+        self.__log == log
 
-    @staticmethod
-    def get_server_url():
-        if not Config.__base_url:
-            return Config.__sandbox and "https://open-api-sandbox.shop.ele.me" or "https://open-api.shop.ele.me"
+
+    def get_log(self):
+        return self.__log
+
+
+
+    def get_server_url(self):
+        if not self.__base_url:
+            return self.__sandbox and "https://open-api-sandbox.shop.ele.me" or "https://open-api.shop.ele.me"
         else:
-            return Config.__base_url
+            return self.__base_url
 
-    @staticmethod
-    def get_access_token_url():
-        return Config.get_server_url() + "/token"
+    def get_access_token_url(self):
+        return self.get_server_url() + "/token"
 
-    @staticmethod
-    def get_api_server_url():
-        return Config.get_server_url() + "/api/v1/"
+    def get_api_server_url(self):
+        return self.get_server_url() + "/api/v1/"
 
-    @staticmethod
-    def get_authorize_url():
-        return Config.get_server_url() + "/authorize"
+    def get_authorize_url(self):
+        return self.get_server_url() + "/authorize"

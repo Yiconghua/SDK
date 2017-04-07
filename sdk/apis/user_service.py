@@ -9,7 +9,9 @@ class UserService:
     def __init__(self, client):
         self.__client = client
 
-    # 获取商户账号信息
     def get_user(self):
+        """
+        获取商户账号信息
+        """
         return self.__client.call("eleme.user.getUser", {})
 

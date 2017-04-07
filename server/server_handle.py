@@ -9,7 +9,7 @@ from sdk.oauth.oauth_client import OAuthClient
 from sdk.config import Config
 from sdk.protocol.rpc_client import RpcClient
 from cgi import parse_qs, escape
-
+from server.start_up import config
 
 demo_html_content = """
 <!DOCTYPE html>
@@ -198,6 +198,7 @@ def process_message(environ, start_response):
     if not CallbackValidationUtil.is_valid_message(request_body):
         response = '{"message":"invalid signature"}'
     else:
+        response = '{"message":"ok"}'
         try:
             eleme_message = json.loads(request_body)
             if (int(eleme_message['messageType']) == 10):
@@ -209,7 +210,6 @@ def process_message(environ, start_response):
                 rpc_client.call("eleme.order.confirmOrder", {"orderId": order_id})
         except Exception as e:
             ISDKLog.info('confirm order error :{}'.format(e.message))
-        response = '{"message":"ok"}'
         ISDKLog.info('myserver response:{}'.format(request_body))
     return [response.encode('utf-8')]
 
@@ -221,7 +221,7 @@ def callback(environ, start_response):
         return [demo_html_content.encode('utf-8')]
     auth_code = query_string.get('code', [''])[0]
     if auth_code:
-        oauth_client = OAuthClient(Config.get_app_key(), Config.get_secret(), Config.get_callback_url())
+        oauth_client = OAuthClient(config.get_app_key(), config.get_secret(), config.get_callback_url())
         response = oauth_client.get_token_by_auth_code(auth_code)
         #response = oauth_client.get_token_in_client_credentials()
         token = json.loads(response)['access_token']
@@ -253,7 +253,7 @@ def get_user_info(environ, start_response):
     while 1:
         line = file.readline()
         if not line:
-            oauth_client = OAuthClient(Config.get_app_key(), Config.get_secret(), Config.get_callback_url())
+            oauth_client = OAuthClient(config.get_app_key(), config.get_secret(), config.get_callback_url())
             auth_url = oauth_client.get_auth_url(str(uuid.uuid4()), 'all')
             result['authUrl'] = auth_url
             return [result.encode('utf-8')]

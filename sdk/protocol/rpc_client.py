@@ -4,7 +4,6 @@ import hashlib
 import json
 import time
 import uuid
-from sdk.sdk_logging import ISDKLog
 import sys
 if sys.version < '3':
     reload(sys)
@@ -37,6 +36,7 @@ class RpcClient:
         self.app_key = config.get_app_key()
         self.secret = config.get_secret()
         self.remote_url = config.get_api_server_url()
+        self.log = config.get_log()
 
     def call(self, action, parameters):
         protocol = {
@@ -100,7 +100,7 @@ class RpcClient:
         return hash_value.upper()
 
     def post(self, data):
-        ISDKLog.info('request eleme api:{}'.format(json.dumps(data).encode('utf-8')))
+        self.log.info('request eleme api:{}'.format(json.dumps(data).encode('utf-8')))
         headers = {
             "Content-Type": "application/json; charset=utf-8",
             "Content-Encoding": "gzip, deflate"
@@ -108,5 +108,5 @@ class RpcClient:
         request = Request(self.remote_url, json.dumps(data).encode('utf-8'), headers)
         response = urlopen(request)
         result = response.read()
-        ISDKLog.info('eleme api response:{}'.format(result.decode('utf-8')))
+        self.log.info('eleme api response:{}'.format(result.decode('utf-8')))
         return result.decode('utf-8')

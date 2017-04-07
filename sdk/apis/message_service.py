@@ -9,11 +9,17 @@ class MessageService:
     def __init__(self, client):
         self.__client = client
 
-    # 获取未到达的推送消息
     def get_non_reached_messages(self, app_id):
+        """
+        获取未到达的推送消息
+        :param appId:应用ID
+        """
         return self.__client.call("eleme.message.getNonReachedMessages", {"appId": app_id})
 
-    # 获取未到达的推送消息实体
     def get_non_reached_o_messages(self, app_id):
+        """
+        获取未到达的推送消息实体
+        :param appId:应用ID
+        """
         return self.__client.call("eleme.message.getNonReachedOMessages", {"appId": app_id})
 

@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from sdk.sdk_logging import ISDKLog
+#from sdk.sdk_logging import ISDKLog
 
 import base64
 try:
@@ -10,7 +10,6 @@ except ImportError:
     from urllib.request import urlopen, Request, quote
     from urllib.parse import urlparse, urlencode
 
-from sdk.config import Config
 from sdk.exception.unauthorized_exception import UnauthorizedException
 
 import sys
@@ -20,12 +19,13 @@ if sys.version < '3':
 
 
 class OAuthClient:
-    def __init__(self, app_key, secret, callback_url=None):
-        self.client_id = app_key
-        self.secret = secret
-        self.callback_url = callback_url
-        self.request_url = Config.get_access_token_url()
-        self.authorize_url = Config.get_authorize_url()
+    def __init__(self, config):
+        self.client_id = config.get_app_key()
+        self.secret = config.get_secret()
+        self.callback_url = config.get_callback_url()
+        self.request_url = config.get_access_token_url()
+        self.authorize_url = config.get_authorize_url()
+        self.log = config.get_log()
 
     # 根据key和secret获取token（客户端授权模式）
     def get_token_in_client_credentials(self):
@@ -62,16 +62,16 @@ class OAuthClient:
     def do_request(self, body):
         data = urlencode(body).encode("ascii")
         header = self.get_headers()
-        ISDKLog.info(u"oauth client request body: {},headers:{}".format(data, header))
+        self.log.info(u"oauth client request body: {},headers:{}".format(data, header))
         req = Request(self.request_url, data, header)
         result = None
         try:
             response = urlopen(req)
             result = response.read()
         except Exception as e:
-            ISDKLog.info("oauth client request error :" + e.read().decode())
+            self.log.error("oauth client request error :" + e.read().decode())
             raise UnauthorizedException(e.read().decode())
-        ISDKLog.info("oauth client response :"+result.decode())
+            self.log.info("oauth client response :"+result.decode())
         return result.decode()
 
     def get_headers(self):
