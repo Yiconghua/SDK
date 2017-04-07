@@ -23,6 +23,9 @@ class Config:
         if(self.__log==None):
             self.__log = SDKLog()
 
+    def get_env(self):
+        return self.__sandbox
+
     def get_app_key(self):
         return self.__app_key
 

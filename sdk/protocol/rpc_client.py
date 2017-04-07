@@ -105,8 +105,11 @@ class RpcClient:
             "Content-Type": "application/json; charset=utf-8",
             "Content-Encoding": "gzip, deflate"
         }
-        request = Request(self.remote_url, json.dumps(data).encode('utf-8'), headers)
-        response = urlopen(request)
-        result = response.read()
-        self.log.info('eleme api response:{}'.format(result.decode('utf-8')))
-        return result.decode('utf-8')
+        try:
+            request = Request(self.remote_url, json.dumps(data).encode('utf-8'), headers)
+            response = urlopen(request)
+            result = response.read()
+            self.log.info('eleme api response:{}'.format(result.decode('utf-8')))
+            return result.decode('utf-8')
+        except Exception as e:
+            self.log.error('eleme api response:{}'.format(e.message))

@@ -71,7 +71,7 @@ class OAuthClient:
         except Exception as e:
             self.log.error("oauth client request error :" + e.read().decode())
             raise UnauthorizedException(e.read().decode())
-            self.log.info("oauth client response :"+result.decode())
+        self.log.info("oauth client response :"+result.decode())
         return result.decode()
 
     def get_headers(self):
