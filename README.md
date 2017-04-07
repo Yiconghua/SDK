@@ -14,7 +14,7 @@
 ### 企业应用
 
   - 第一步 安装sdk 包,引入模块
-  sudo pip install eleme.python.sdk
+  sudo pip install eleme.openapi.python.sdk
 ```python
     from sdk.library.oauth.oauth_client import OAuthClient
     from sdk.apis.shop_service import ShopService
@@ -70,7 +70,7 @@
 
 
   - 第一步 安装sdk 包,引入模块
-    sodu install eleme.openapi.sdk
+    sudo pip install eleme.openapi.python.sdk
 
 ```python
     from sdk.oauth.oauth_client import OAuthClient
@@ -113,7 +113,7 @@
 
 ### Server 使用方式
  - 第一步 安装sdk 包,引入模块
-    sodu install eleme.openapi.sdk
+    sudo pip install eleme.openapi.python.sdk
 
  - 第二步 引入依赖
  ```python
