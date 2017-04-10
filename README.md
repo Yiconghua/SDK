@@ -2,7 +2,6 @@
 
 ## 接入指南
   * 安装eleme sdk依赖包,引入依赖
-  
   * 利用sdk.config 模块初始化设置沙箱环境，key,secret,调用config.set_log 设置自己的log处理方式。如果是企业应用还需设置callback_url
   * 利用sdk.oauth 模块完成oauth授权测试
   * 利用sdk.api 模块完成接口调用测试
