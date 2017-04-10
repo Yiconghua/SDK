@@ -1,12 +1,13 @@
 # Python SDK 接入指南 & CHANGELOG
 
 ## 接入指南
-  1.安装eleme sdk依赖包,引入依赖
-  2.利用sdk.config 模块初始化设置沙箱环境，key,secret,调用config.set_log 设置自己的log处理方式。如果是企业应用还需设置callback_url
-    利用sdk.oauth 模块完成oauth授权测试
-    利用sdk.api 模块完成接口调用测试
-    启动sdk自带的server 帮助完成接收饿了么推送消息业务,以及授权测试
-  3.上线前将config.py中初始值__sandbox,key和secret以及callback_url填为正式环境
+  * 安装eleme sdk依赖包,引入依赖
+  
+  * 利用sdk.config 模块初始化设置沙箱环境，key,secret,调用config.set_log 设置自己的log处理方式。如果是企业应用还需设置callback_url
+  * 利用sdk.oauth 模块完成oauth授权测试
+  * 利用sdk.api 模块完成接口调用测试
+  * 启动sdk自带的server 帮助完成接收饿了么推送消息业务,以及授权测试
+  * 上线前将config.py中初始值__sandbox,key和secret以及callback_url填为正式环境
  
 
 ## 代码示例
