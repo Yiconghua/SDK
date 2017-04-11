@@ -6,8 +6,6 @@ class Config:
     __app_key = None
     # your secret
     __secret = None
-
-    __log_path = None
     # your callback url
     __callback_url = None
 
@@ -32,7 +30,6 @@ class Config:
     def set_base_url(self, base_url):
         self.__base_url = base_url
 
-
     def get_secret(self):
         return self.__secret
 
@@ -44,13 +41,10 @@ class Config:
             raise Exception (' log not has info method!')
         if not (hasattr(log, 'error')):
             raise Exception ('log not has error method!')
-        self.__log == log
-
+        self.__log = log
 
     def get_log(self):
         return self.__log
-
-
 
     def get_server_url(self):
         if not self.__base_url:

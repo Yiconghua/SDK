@@ -19,11 +19,11 @@ demo_html_content = """
 <body>
   <div class="w1000">
     <div class="userinfo">
-      <p>当前登录用户ID为<span id="userId">{%s}</span></p>
-      <p>当前店铺名称为<span id="shopName">{%s}</span></p>
+      <p>当前登录用户ID为<span id="userId">{{ userId }}</span></p>
+      <p>当前店铺名称为<span id="shopName">{{ shopName }}</span></p>
     </div>
     <div class="icon-box">
-      <img src="https://fuss.alpha.elenet.me/0/71/ef76406ecd56a0cbac11a869eded1png.png" alt="">
+      <img src="https://fuss10.elemecdn.com/4/e7/225b8c9ae6b02c10de010b00f9504png.png" alt="">
       </br>
       智能配送助手
     </div>

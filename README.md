@@ -6,10 +6,11 @@
     利用sdk.oauth 模块完成oauth授权测试
     利用sdk.api 模块完成接口调用测试
     启动sdk自带的server 帮助完成接收饿了么推送消息业务,以及授权测试
-  3.上线前将config.py中初始值__sandbox,key和secret以及callback_url填为正式环境
- 
+  3.上线前将config.py中初始值sandbox,key和secret以及callback_url填为正式环境
 
-## 代码示例
+
+## 代码示例(以调用ShopService为例)
+
 
 ### 企业应用
 
@@ -21,9 +22,18 @@
     from sdk.config import Config
 ```
  
-  - 第二步  实例化一个config 实例化一个oauth2.0客户端授权模式的授权对象
+  - 第二步  实例化一个config,设置自己的日志处理方式 实例化一个oauth2.0客户端授权模式的授权对象
 ```python
     config = Config(True, key, secret, call_back_url)
+    # 自己的日志处理方式,必须有info 和error 方法
+    class MyLog:
+        def info(self, log):
+            print (u"my info log:{}".format(log))
+
+        def error(self, log):
+            print (u"my error log:{}".format(log))
+
+    config.set_log(MyLog())
     oauth_client = OAuthClient(config)
 ```
 
@@ -68,7 +78,6 @@
 
 ### 个人应用
 
-
   - 第一步 安装sdk 包,引入模块
     sudo pip install eleme.openapi.python.sdk
 
@@ -83,6 +92,15 @@
 
 ```python
     config = Config(True, key, secret)
+    # 自己的日志处理方式,必须有info 和error 方法
+    class MyLog:
+        def info(self, log):
+            print (u"my info log:{}".format(log))
+
+        def error(self, log):
+            print (u"my error log:{}".format(log))
+
+    config.set_log(MyLog())
     oauth_client = OAuthClient(config)
 ```
 
@@ -112,6 +130,7 @@
 
 
 ### Server 使用方式
+
  - 第一步 安装sdk 包,引入模块
     sudo pip install eleme.openapi.python.sdk
 
@@ -122,19 +141,31 @@
     from server.start_up import boot_start
  ```
  - 第三步 初始化config对象,并将config对象设置到Global中
+
+ ```python
     config = Config(True, key, secret, call_back_url)
+    # 自己的日志处理方式,必须有info 和error 方法
+    class MyLog:
+        def info(self, log):
+            print (u"my info log:{}".format(log))
+
+        def error(self, log):
+            print (u"my error log:{}".format(log))
+
+    config.set_log(MyLog())
     Global(config)
+ ```
 
- 启动服务
-
-```python
-    boot_start(port)
-```
-    启动服务后 会监听三个localtion
+ - 第三步 启动服务
+ 启动服务后 会监听三个localtion
     1.get  /listenMessage  响应饿了么平台的url校检
     2.post /listenMessage  接收饿了么平台的消息推送
     3.get  /callback       授权回调地址，处理授权逻辑
     4.post /getInfo        获取当前的用户信息和店铺信息
+
+```python
+    boot_start(port)
+```
 
 
 
@@ -146,4 +177,10 @@
     Release Date : 2017-04-07
 
   - [feature] eleme sdk
+
+### [v1.0.1]
+
+    Release Date : 2017-04-11
+
+  - [feature] 1.文档优化;2.修改回调页面图标
 
