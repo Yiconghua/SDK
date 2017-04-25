@@ -82,10 +82,3 @@ class OrderService:
         """
         return self.__client.call("eleme.order.noMoreDelivery", {"orderId": order_id})
 
-    def received_order(self, order_id):
-        """
-        订单确认送达
-        :param orderId:订单ID
-        """
-        return self.__client.call("eleme.order.receivedOrder", {"orderId": order_id})
-

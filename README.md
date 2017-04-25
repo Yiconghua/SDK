@@ -18,7 +18,7 @@
   sudo pip install eleme.openapi.python.sdk
 
 ```python
-    from sdk.library.oauth.oauth_client import OAuthClient
+    from sdk.oauth.oauth_client import OAuthClient
     from sdk.apis.shop_service import ShopService
     from sdk.config import Config
 ```
@@ -187,4 +187,10 @@
     Release Date : 2017-04-11
 
   - [feature] 1.文档优化;2.修改回调页面图标
+
+### [v1.1.0]
+
+    Release Date : 2017-04-25
+
+  - [feature] 1.增加ugc服务;2.订单服务增加确认送达接口;3.shop服务增加设置送达时间接口;4.product服务增加 批量沽清置满接口
 

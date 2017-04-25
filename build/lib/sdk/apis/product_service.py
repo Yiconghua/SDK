@@ -9,74 +9,6 @@ class ProductService:
     def __init__(self, client):
         self.__client = client
 
-    def get_shop_categories(self, shop_id):
-        """
-        查询店铺商品分类
-        :param shopId:店铺Id
-        """
-        return self.__client.call("eleme.product.category.getShopCategories", {"shopId": shop_id})
-
-    def get_category(self, category_id):
-        """
-        查询商品分类详情
-        :param categoryId:商品分类Id
-        """
-        return self.__client.call("eleme.product.category.getCategory", {"categoryId": category_id})
-
-    def create_category(self, shop_id, name, description):
-        """
-        添加商品分类
-        :param shopId:店铺Id
-        :param name:商品分类名称，长度需在50字以内
-        :param description:商品分类描述，长度需在50字以内
-        """
-        return self.__client.call("eleme.product.category.createCategory", {"shopId": shop_id, "name": name, "description": description})
-
-    def update_category(self, category_id, name, description):
-        """
-        更新商品分类
-        :param categoryId:商品分类Id
-        :param name:商品分类名称，长度需在50字以内
-        :param description:商品分类描述，长度需在50字以内
-        """
-        return self.__client.call("eleme.product.category.updateCategory", {"categoryId": category_id, "name": name, "description": description})
-
-    def remove_category(self, category_id):
-        """
-        删除商品分类
-        :param categoryId:商品分类Id
-        """
-        return self.__client.call("eleme.product.category.removeCategory", {"categoryId": category_id})
-
-    def set_category_positions(self, shop_id, category_ids):
-        """
-        设置分类排序
-        :param shopId:饿了么店铺Id
-        :param categoryIds:需要排序的分类Id
-        """
-        return self.__client.call("eleme.product.category.setCategoryPositions", {"shopId": shop_id, "categoryIds": category_ids})
-
-    def upload_image(self, image):
-        """
-        上传图片，返回图片的hash值
-        :param image:文件内容base64编码值
-        """
-        return self.__client.call("eleme.file.uploadImage", {"image": image})
-
-    def upload_image_with_remote_url(self, url):
-        """
-        通过远程URL上传图片，返回图片的hash值
-        :param url:远程Url地址
-        """
-        return self.__client.call("eleme.file.uploadImageWithRemoteUrl", {"url": url})
-
-    def get_uploaded_url(self, hash):
-        """
-        获取上传文件的访问URL，返回文件的Url地址
-        :param hash:图片hash值
-        """
-        return self.__client.call("eleme.file.getUploadedUrl", {"hash": hash})
-
     def get_items_by_category_id(self, category_id):
         """
         获取一个分类下的所有商品
@@ -180,10 +112,71 @@ class ProductService:
         """
         return self.__client.call("eleme.product.item.setItemPositions", {"categoryId": category_id, "itemIds": item_ids})
 
-    def clear_and_timing_max_stock(self, clear_stocks):
+    def get_shop_categories(self, shop_id):
         """
-        批量沽清库存并在次日2:00开始置满
-        :param clearStocks:店铺Id及商品Id的列表
+        查询店铺商品分类
+        :param shopId:店铺Id
         """
-        return self.__client.call("eleme.product.item.clearAndTimingMaxStock", {"clearStocks": clear_stocks})
+        return self.__client.call("eleme.product.category.getShopCategories", {"shopId": shop_id})
+
+    def get_category(self, category_id):
+        """
+        查询商品分类详情
+        :param categoryId:商品分类Id
+        """
+        return self.__client.call("eleme.product.category.getCategory", {"categoryId": category_id})
+
+    def create_category(self, shop_id, name, description):
+        """
+        添加商品分类
+        :param shopId:店铺Id
+        :param name:商品分类名称，长度需在50字以内
+        :param description:商品分类描述，长度需在50字以内
+        """
+        return self.__client.call("eleme.product.category.createCategory", {"shopId": shop_id, "name": name, "description": description})
+
+    def update_category(self, category_id, name, description):
+        """
+        更新商品分类
+        :param categoryId:商品分类Id
+        :param name:商品分类名称，长度需在50字以内
+        :param description:商品分类描述，长度需在50字以内
+        """
+        return self.__client.call("eleme.product.category.updateCategory", {"categoryId": category_id, "name": name, "description": description})
+
+    def remove_category(self, category_id):
+        """
+        删除商品分类
+        :param categoryId:商品分类Id
+        """
+        return self.__client.call("eleme.product.category.removeCategory", {"categoryId": category_id})
+
+    def set_category_positions(self, shop_id, category_ids):
+        """
+        设置分类排序
+        :param shopId:饿了么店铺Id
+        :param categoryIds:需要排序的分类Id
+        """
+        return self.__client.call("eleme.product.category.setCategoryPositions", {"shopId": shop_id, "categoryIds": category_ids})
+
+    def upload_image(self, image):
+        """
+        上传图片，返回图片的hash值
+        :param image:文件内容base64编码值
+        """
+        return self.__client.call("eleme.file.uploadImage", {"image": image})
+
+    def upload_image_with_remote_url(self, url):
+        """
+        通过远程URL上传图片，返回图片的hash值
+        :param url:远程Url地址
+        """
+        return self.__client.call("eleme.file.uploadImageWithRemoteUrl", {"url": url})
+
+    def get_uploaded_url(self, hash):
+        """
+        获取上传文件的访问URL，返回文件的Url地址
+        :param hash:图片hash值
+        """
+        return self.__client.call("eleme.file.getUploadedUrl", {"hash": hash})
 

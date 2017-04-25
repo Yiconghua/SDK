@@ -31,12 +31,3 @@ class ShopService:
         """
         return self.__client.call("eleme.shop.mgetShopStatus", {"shopIds": shop_ids})
 
-    def set_delivery_time(self, shop_id, delivery_basic_mins, delivery_adjust_mins):
-        """
-        设置送达时间
-        :param shopId:店铺Id
-        :param deliveryBasicMins:配送基准时间(单位分钟)
-        :param deliveryAdjustMins:配送调整时间(单位分钟)
-        """
-        return self.__client.call("eleme.shop.setDeliveryTime", {"shopId": shop_id, "deliveryBasicMins": delivery_basic_mins, "deliveryAdjustMins": delivery_adjust_mins})
-
