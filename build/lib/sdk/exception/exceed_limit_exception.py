@@ -1,2 +1,0 @@
-
-class ExceedLimitException(Exception):pass
