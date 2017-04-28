@@ -194,3 +194,10 @@
 
   - [feature] 1.增加ugc服务;2.订单服务增加确认送达接口;3.shop服务增加设置送达时间接口;4.product服务增加 批量沽清置满接口
 
+### [v1.1.1]
+
+    Release Date : 2017-04-28
+
+  - [bugfix] 1.为和老版本使用习惯保持一致,RpcClient(config,token) 中的token含义由access_token改为含有access_token 属性的json串
+	
+
