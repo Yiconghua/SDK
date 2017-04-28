@@ -116,7 +116,7 @@
   - 第四步 实例化远程调用的client对象
 
 ```python
-    rpc_client = RpcClient(token, config)
+    rpc_client = RpcClient(config, token)
 ```
 
   - 第五步 实例化一个服务对象
