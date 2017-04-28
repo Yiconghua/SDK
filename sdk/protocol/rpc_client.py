@@ -43,7 +43,7 @@ class RpcClient:
             "nop": "1.0.0",
             "id": str(uuid.uuid4()),
             "action": action,
-            "token": self.token,
+            "token": json.loads(self.token)['access_token'],
             "metas": {
                 "app_key": self.app_key,
                 "timestamp": int(time.time())
