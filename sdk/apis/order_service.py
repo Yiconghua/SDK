@@ -89,3 +89,40 @@ class OrderService:
         """
         return self.__client.call("eleme.order.receivedOrder", {"orderId": order_id})
 
+    def reply_reminder(self, remind_id, type, content):
+        """
+        回复催单
+        :param remindId:催单Id
+        :param type:回复类别
+        :param content:回复内容
+        """
+        return self.__client.call("eleme.order.replyReminder", {"remindId": remind_id, "type": type, "content": content})
+
+    def get_commodities(self, order_id):
+        """
+        获取指定订单菜品活动价格.
+        :param orderId:订单Id
+        """
+        return self.__client.call("eleme.order.getCommodities", {"orderId": order_id})
+
+    def mget_commodities(self, order_ids):
+        """
+        批量获取订单菜品活动价格
+        :param orderIds:订单Id列表
+        """
+        return self.__client.call("eleme.order.mgetCommodities", {"orderIds": order_ids})
+
+    def get_refund_order(self, order_id):
+        """
+        获取订单退款信息
+        :param orderId:订单Id
+        """
+        return self.__client.call("eleme.order.getRefundOrder", {"orderId": order_id})
+
+    def mget_refund_orders(self, order_ids):
+        """
+        批量获取订单退款信息
+        :param orderIds:订单Id列表
+        """
+        return self.__client.call("eleme.order.mgetRefundOrders", {"orderIds": order_ids})
+

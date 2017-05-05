@@ -103,7 +103,8 @@ class RpcClient:
         self.log.info('request eleme api:{}'.format(json.dumps(data).encode('utf-8')))
         headers = {
             "Content-Type": "application/json; charset=utf-8",
-            "Content-Encoding": "gzip, deflate"
+            "Content-Encoding": "gzip, deflate",
+            "User-Agent": "eleme-openapi-python-sdk"
         }
         try:
             request = Request(self.remote_url, json.dumps(data).encode('utf-8'), headers)

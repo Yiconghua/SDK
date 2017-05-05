@@ -200,4 +200,13 @@
 
   - [bugfix] 1.为和老版本使用习惯保持一致,RpcClient(config,token) 中的token含义由access_token改为含有access_token 属性的json串
 	
+### [v1.2.0]
+
+    Release Date : 2017-05-05
+
+  - [feature]
+  1.增加签约服务;
+  2.订单服务中新增了 eleme.order.replyReminder eleme.order.getCommodities eleme.order.mgetCommodities eleme.order.getRefundOrder eleme.order.mgetRefundOrders
+  3.增加接口查询商品后台分类 eleme.product.category.getBackCategory
+
 

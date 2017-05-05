@@ -56,6 +56,13 @@ class ProductService:
         """
         return self.__client.call("eleme.product.category.setCategoryPositions", {"shopId": shop_id, "categoryIds": category_ids})
 
+    def get_back_category(self, shop_id):
+        """
+        查询商品后台分类
+        :param shopId:店铺Id
+        """
+        return self.__client.call("eleme.product.category.getBackCategory", {"shopId": shop_id})
+
     def upload_image(self, image):
         """
         上传图片，返回图片的hash值

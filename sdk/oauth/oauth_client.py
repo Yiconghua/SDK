@@ -80,7 +80,8 @@ class OAuthClient:
         headers = {
             "Authorization": "Basic " + value.decode(),
             "Content-Type": "application/x-www-form-urlencoded; charset=utf-8",
-            "Content-Encoding": "gzip, deflate"
+            "Content-Encoding": "gzip, deflate",
+            "User-Agent": "eleme-openapi-python-sdk"
         }
         return headers
 
