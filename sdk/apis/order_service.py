@@ -94,7 +94,7 @@ class OrderService:
         回复催单
         :param remindId:催单Id
         :param type:回复类别
-        :param content:回复内容
+        :param content:回复内容,如果type为custom,content必填,回复内容不能超过30个字符
         """
         return self.__client.call("eleme.order.replyReminder", {"remindId": remind_id, "type": type, "content": content})
 
@@ -125,4 +125,19 @@ class OrderService:
         :param orderIds:订单Id列表
         """
         return self.__client.call("eleme.order.mgetRefundOrders", {"orderIds": order_ids})
+
+    def cancel_delivery(self, order_id):
+        """
+        取消呼叫配送
+        :param orderId:订单Id
+        """
+        return self.__client.call("eleme.order.cancelDelivery", {"orderId": order_id})
+
+    def call_delivery(self, order_id, fee):
+        """
+        呼叫配送
+        :param orderId:订单Id
+        :param fee:小费,1-8之间的整数
+        """
+        return self.__client.call("eleme.order.callDelivery", {"orderId": order_id, "fee": fee})
 

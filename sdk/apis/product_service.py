@@ -16,12 +16,26 @@ class ProductService:
         """
         return self.__client.call("eleme.product.category.getShopCategories", {"shopId": shop_id})
 
+    def get_shop_categories_with_children(self, shop_id):
+        """
+        查询店铺商品分类，包含二级分类
+        :param shopId:店铺Id
+        """
+        return self.__client.call("eleme.product.category.getShopCategoriesWithChildren", {"shopId": shop_id})
+
     def get_category(self, category_id):
         """
         查询商品分类详情
         :param categoryId:商品分类Id
         """
         return self.__client.call("eleme.product.category.getCategory", {"categoryId": category_id})
+
+    def get_category_with_children(self, category_id):
+        """
+        查询商品分类详情，包含二级分类
+        :param categoryId:商品分类Id
+        """
+        return self.__client.call("eleme.product.category.getCategoryWithChildren", {"categoryId": category_id})
 
     def create_category(self, shop_id, name, description):
         """
@@ -32,6 +46,16 @@ class ProductService:
         """
         return self.__client.call("eleme.product.category.createCategory", {"shopId": shop_id, "name": name, "description": description})
 
+    def create_category_with_children(self, shop_id, name, parent_id, description):
+        """
+        添加商品分类，支持二级分类
+        :param shopId:店铺Id
+        :param name:商品分类名称，长度需在50字以内
+        :param parentId:父分类ID，如果没有可以填0
+        :param description:商品分类描述，长度需在50字以内
+        """
+        return self.__client.call("eleme.product.category.createCategoryWithChildren", {"shopId": shop_id, "name": name, "parentId": parent_id, "description": description})
+
     def update_category(self, category_id, name, description):
         """
         更新商品分类
@@ -40,6 +64,16 @@ class ProductService:
         :param description:商品分类描述，长度需在50字以内
         """
         return self.__client.call("eleme.product.category.updateCategory", {"categoryId": category_id, "name": name, "description": description})
+
+    def update_category_with_children(self, category_id, name, parent_id, description):
+        """
+        更新商品分类，包含二级分类
+        :param categoryId:商品分类Id
+        :param name:商品分类名称，长度需在50字以内
+        :param parentId:父分类ID，如果没有可以填0
+        :param description:商品分类描述，长度需在50字以内
+        """
+        return self.__client.call("eleme.product.category.updateCategoryWithChildren", {"categoryId": category_id, "name": name, "parentId": parent_id, "description": description})
 
     def remove_category(self, category_id):
         """
@@ -55,6 +89,14 @@ class ProductService:
         :param categoryIds:需要排序的分类Id
         """
         return self.__client.call("eleme.product.category.setCategoryPositions", {"shopId": shop_id, "categoryIds": category_ids})
+
+    def set_category_positions_with_children(self, shop_id, category_with_children_ids):
+        """
+        设置二级分类排序
+        :param shopId:饿了么店铺Id
+        :param categoryWithChildrenIds:需要排序的父分类Id，及其下属的二级分类ID
+        """
+        return self.__client.call("eleme.product.category.setCategoryPositionsWithChildren", {"shopId": shop_id, "categoryWithChildrenIds": category_with_children_ids})
 
     def get_back_category(self, shop_id):
         """
@@ -193,4 +235,12 @@ class ProductService:
         :param clearStocks:店铺Id及商品Id的列表
         """
         return self.__client.call("eleme.product.item.clearAndTimingMaxStock", {"clearStocks": clear_stocks})
+
+    def batch_update_prices(self, shop_id, spec_prices):
+        """
+        批量修改商品价格
+        :param shopId:店铺Id
+        :param specPrices:商品Id及其下SkuId和价格对应Map
+        """
+        return self.__client.call("eleme.product.item.batchUpdatePrices", {"shopId": shop_id, "specPrices": spec_prices})
 
