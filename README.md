@@ -214,9 +214,9 @@
     Release Date : 2017-05-12
 
   - [feature]
-   1. 在商品服务中增加了 eleme.product.item.batchUpdatePrices 批量修改商品价格的接口
-   2.在订单服务中增加了 eleme.order.cancelDelivery 取消呼叫配送和 eleme.order.callDelivery 呼叫配送这两个接口
-   3.在订单服务中修改了 OOrder 类的定义，增加了一个 List<OActivity> 的属性。
-   4.在商品服务中增加了 eleme.product.category.getShopCategoriesWithChildren 查询店铺商品分类，包含二级分类；eleme.product.category.getCategoryWithChildren 查询商品分类详情，包含二级分类；eleme.product.category.createCategoryWithChildren 添加商品分类，支持二级分类；eleme.product.category.updateCategoryWithChildren 更新商品分类，包含二级分类；eleme.product.category.setCategoryPositionsWithChildren 设置二级分类排序这五个接口。
+  1.在商品服务中增加了 eleme.product.item.batchUpdatePrices 批量修改商品价格的接口
+  2.在订单服务中增加了 eleme.order.cancelDelivery 取消呼叫配送和 eleme.order.callDelivery 呼叫配送这两个接口
+  3.在订单服务中修改了 OOrder 类的定义，增加了一个 List<OActivity> 的属性。
+  4.在商品服务中增加了 eleme.product.category.getShopCategoriesWithChildren 查询店铺商品分类，包含二级分类；eleme.product.category.getCategoryWithChildren 查询商品分类详情，包含二级分类；eleme.product.category.createCategoryWithChildren 添加商品分类，支持二级分类；eleme.product.category.updateCategoryWithChildren 更新商品分类，包含二级分类；eleme.product.category.setCategoryPositionsWithChildren 设置二级分类排序这五个接口。
 
 
