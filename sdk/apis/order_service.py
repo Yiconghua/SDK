@@ -141,3 +141,41 @@ class OrderService:
         """
         return self.__client.call("eleme.order.callDelivery", {"orderId": order_id, "fee": fee})
 
+    def get_unreply_reminders(self, shop_id):
+        """
+        获取店铺未回复的催单
+        :param shopId:店铺id
+        """
+        return self.__client.call("eleme.order.getUnreplyReminders", {"shopId": shop_id})
+
+    def get_unprocess_orders(self, shop_id):
+        """
+        查询店铺未处理订单
+        :param shopId:店铺id
+        """
+        return self.__client.call("eleme.order.getUnprocessOrders", {"shopId": shop_id})
+
+    def get_cancel_orders(self, shop_id):
+        """
+        查询店铺未处理的取消单
+        :param shopId:店铺id
+        """
+        return self.__client.call("eleme.order.getCancelOrders", {"shopId": shop_id})
+
+    def get_refund_orders(self, shop_id):
+        """
+        查询店铺未处理的退单
+        :param shopId:店铺id
+        """
+        return self.__client.call("eleme.order.getRefundOrders", {"shopId": shop_id})
+
+    def get_all_orders(self, shop_id, page_no, page_size, date):
+        """
+        查询全部订单
+        :param shopId:店铺id
+        :param pageNo:页码。取值范围:大于零的整数最大限制为100; 默认值:1
+        :param pageSize:每页获取条数。默认值20，最小值1，最大值50。
+        :param date:日期,默认当天,格式:yyyy-MM-dd
+        """
+        return self.__client.call("eleme.order.getAllOrders", {"shopId": shop_id, "pageNo": page_no, "pageSize": page_size, "date": date})
+

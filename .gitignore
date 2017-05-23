@@ -19,5 +19,4 @@
 /generatetool
 /build
 /dist
-/eleme
-
+/eleme.openapi.python.sdk.egg-info

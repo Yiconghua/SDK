@@ -100,7 +100,7 @@ class ProductService:
 
     def get_back_category(self, shop_id):
         """
-        查询商品后台分类
+        查询商品后台类目
         :param shopId:店铺Id
         """
         return self.__client.call("eleme.product.category.getBackCategory", {"shopId": shop_id})
@@ -235,6 +235,22 @@ class ProductService:
         :param clearStocks:店铺Id及商品Id的列表
         """
         return self.__client.call("eleme.product.item.clearAndTimingMaxStock", {"clearStocks": clear_stocks})
+
+    def get_item_by_shop_id_and_extend_code(self, shop_id, extend_code):
+        """
+        根据商品扩展码获取商品
+        :param shopId:店铺Id
+        :param extendCode:商品扩展码
+        """
+        return self.__client.call("eleme.product.item.getItemByShopIdAndExtendCode", {"shopId": shop_id, "extendCode": extend_code})
+
+    def get_items_by_shop_id_and_bar_code(self, shop_id, bar_code):
+        """
+        根据商品条形码获取商品
+        :param shopId:店铺Id
+        :param barCode:商品条形码
+        """
+        return self.__client.call("eleme.product.item.getItemsByShopIdAndBarCode", {"shopId": shop_id, "barCode": bar_code})
 
     def batch_update_prices(self, shop_id, spec_prices):
         """

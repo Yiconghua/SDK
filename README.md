@@ -220,3 +220,11 @@
    4.在商品服务中增加了 eleme.product.category.getShopCategoriesWithChildren 查询店铺商品分类，包含二级分类；eleme.product.category.getCategoryWithChildren 查询商品分类详情，包含二级分类；eleme.product.category.createCategoryWithChildren 添加商品分类，支持二级分类；eleme.product.category.updateCategoryWithChildren 更新商品分类，包含二级分类；eleme.product.category.setCategoryPositionsWithChildren 设置二级分类排序这五个接口。
 
 
+### [v1.4.0]
+
+    Release Date : 2017-05-23
+
+  - [feature]
+   1.在商户服务中增加了 eleme.user.getPhoneNumber 获取当前授权帐号的手机号
+   2.在订单服务中增加了 eleme.order.getUnreplyReminders 获取店铺未回复的催单；eleme.order.getUnprocessOrders 查询店铺未处理订单；eleme.order.getCancelOrders 查询店铺未处理的取消单；eleme.order.getRefundOrders 查询店铺未处理的退单；eleme.order.getAllOrders 查询全部订单这五个新接口
+   3.在商品服务中增加了 eleme.product.item.getItemByShopIdAndExtendCode 根据商品扩展码获取商品；eleme.product.item.getItemsByShopIdAndBarCode 根据条形码获取商品
