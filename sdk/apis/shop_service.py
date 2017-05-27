@@ -40,3 +40,11 @@ class ShopService:
         """
         return self.__client.call("eleme.shop.setDeliveryTime", {"shopId": shop_id, "deliveryBasicMins": delivery_basic_mins, "deliveryAdjustMins": delivery_adjust_mins})
 
+    def set_online_refund(self, shop_id, enable):
+        """
+        设置是否支持在线退单
+        :param shopId:店铺Id
+        :param enable:是否支持
+        """
+        return self.__client.call("eleme.shop.setOnlineRefund", {"shopId": shop_id, "enable": enable})
+
