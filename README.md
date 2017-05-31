@@ -180,58 +180,57 @@
 
     Release Date : 2017-05-27
 
-    - [Feature] 在订单服务中增加了若干订单操作的轻量接口
-    - [Feature] 在店铺服务中增加了 eleme.shop.setOnlineRefund 设置是否支持在线退单
+- [Feature] 在订单服务中增加了若干订单操作的轻量接口
+- [Feature] 在店铺服务中增加了 eleme.shop.setOnlineRefund 设置是否支持在线退单
 
 ### [v1.4.0]
 
     Release Date : 2017-05-23
 
-
-    - [feature] 在商户服务中增加了 eleme.user.getPhoneNumber 获取当前授权帐号的手机号
-    - [feature] 在订单服务中增加了 eleme.order.getUnreplyReminders 获取店铺未回复的催单；eleme.order.getUnprocessOrders 查询店铺未处理订单；eleme.order.getCancelOrders 查询店铺未处理的取消单；eleme.order.getRefundOrders 查询店铺未处理的退单；eleme.order.getAllOrders 查询全部订单这五个新接口
-    - [feature] 在商品服务中增加了 eleme.product.item.getItemByShopIdAndExtendCode 根据商品扩展码获取商品；eleme.product.item.getItemsByShopIdAndBarCode 根据条形码获取商品
+- [feature] 在商户服务中增加了 eleme.user.getPhoneNumber 获取当前授权帐号的手机号
+- [feature] 在订单服务中增加了 eleme.order.getUnreplyReminders 获取店铺未回复的催单；eleme.order.getUnprocessOrders 查询店铺未处理订单；eleme.order.getCancelOrders 查询店铺未处理的取消单；eleme.order.getRefundOrders 查询店铺未处理的退单；eleme.order.getAllOrders 查询全部订单这五个新接口
+- [feature] 在商品服务中增加了 eleme.product.item.getItemByShopIdAndExtendCode 根据商品扩展码获取商品；eleme.product.item.getItemsByShopIdAndBarCode 根据条形码获取商品
 
 ### [v1.3.0]
 
     Release Date : 2017-05-12
 
-     - [feature] 在商品服务中增加了 eleme.product.item.batchUpdatePrices 批量修改商品价格的接口
-     - [feature] 在订单服务中增加了 eleme.order.cancelDelivery 取消呼叫配送和 eleme.order.callDelivery 呼叫配送这两个接口
-     - [feature] 在订单服务中修改了 OOrder 类的定义，增加了一个 List<OActivity> 的属性。
-     - [feature] 在商品服务中增加了 eleme.product.category.getShopCategoriesWithChildren 查询店铺商品分类，包含二级分类；eleme.product.category.getCategoryWithChildren 查询商品分类详情，包含二级分类；eleme.product.category.createCategoryWithChildren 添加商品分类，支持二级分类；eleme.product.category.updateCategoryWithChildren 更新商品分类，包含二级分类；eleme.product.category.setCategoryPositionsWithChildren 设置二级分类排序这五个接口。
+- [feature] 在商品服务中增加了 eleme.product.item.batchUpdatePrices 批量修改商品价格的接口
+- [feature] 在订单服务中增加了 eleme.order.cancelDelivery 取消呼叫配送和 eleme.order.callDelivery 呼叫配送这两个接口
+- [feature] 在订单服务中修改了 OOrder 类的定义，增加了一个 List<OActivity> 的属性。
+- [feature] 在商品服务中增加了 eleme.product.category.getShopCategoriesWithChildren 查询店铺商品分类，包含二级分类；eleme.product.category.getCategoryWithChildren 查询商品分类详情，包含二级分类；eleme.product.category.createCategoryWithChildren 添加商品分类，支持二级分类；eleme.product.category.updateCategoryWithChildren 更新商品分类，包含二级分类；eleme.product.category.setCategoryPositionsWithChildren 设置二级分类排序这五个接口。
 
 ### [v1.2.0]
 
     Release Date : 2017-05-05
 
-     - [feature] 增加签约服务;
-     - [feature] 订单服务中新增了 eleme.order.replyReminder eleme.order.getCommodities eleme.order.mgetCommodities eleme.order.getRefundOrder eleme.order.mgetRefundOrders
-     - [feature] 增加接口查询商品后台分类 eleme.product.category.getBackCategory
+- [feature] 增加签约服务;
+- [feature] 订单服务中新增了 eleme.order.replyReminder eleme.order.getCommodities eleme.order.mgetCommodities eleme.order.getRefundOrder eleme.order.mgetRefundOrders
+- [feature] 增加接口查询商品后台分类 eleme.product.category.getBackCategory
 
 ### [v1.1.1]
 
     Release Date : 2017-04-28
 
-     - [bugfix] 为和老版本使用习惯保持一致,RpcClient(config,token) 中的token含义由access_token改为含有access_token 属性的json串
+- [bugfix] 为和老版本使用习惯保持一致,RpcClient(config,token) 中的token含义由access_token改为含有access_token 属性的json串
 
 ### [v1.1.0]
 
     Release Date : 2017-04-25
 
-      - [feature] 1.增加ugc服务;2.订单服务增加确认送达接口;3.shop服务增加设置送达时间接口;4.product服务增加 批量沽清置满接口
+- [feature] 1.增加ugc服务;2.订单服务增加确认送达接口;3.shop服务增加设置送达时间接口;4.product服务增加 批量沽清置满接口
 
 ### [v1.0.1]
 
     Release Date : 2017-04-11
 
-      - [feature] 1.文档优化;2.修改回调页面图标
+- [feature] 1.文档优化;2.修改回调页面图标
 
 ### [v1.0.0]
 
     Release Date : 2017-04-07
 
-      - [feature] eleme sdk
+- [feature] eleme sdk
 
 
 
