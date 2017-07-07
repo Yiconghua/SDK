@@ -176,6 +176,14 @@
 
 ## CHANGELOG:
 
+### [v1.6.0]
+    Release Date : 2017-07-07
+
+
+    - [feature] 新增两个金融接口。eleme.finance.queryBalance 和 eleme.finance.queryBalanceLog
+    - [feature] 新增接口 eleme.product.item.getItemIdsHasActivityByShopId
+    - [feature] 修改包含实体 OItem 的接口，属性 specs,多返回活动标识字段activityLevel
+
 ### [v1.5.0]
 
     Release Date : 2017-05-27

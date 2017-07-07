@@ -225,8 +225,8 @@ class OrderService:
         """
         查询全部订单
         :param shopId:店铺id
-        :param pageNo:页码。取值范围:大于零的整数最大限制为100; 默认值:1
-        :param pageSize:每页获取条数。默认值20，最小值1，最大值50。
+        :param pageNo:页码。取值范围:大于零的整数最大限制为100
+        :param pageSize:每页获取条数。最小值1，最大值50。
         :param date:日期,默认当天,格式:yyyy-MM-dd
         """
         return self.__client.call("eleme.order.getAllOrders", {"shopId": shop_id, "pageNo": page_no, "pageSize": page_size, "date": date})
