@@ -229,6 +229,13 @@ class ProductService:
         """
         return self.__client.call("eleme.product.item.setItemPositions", {"categoryId": category_id, "itemIds": item_ids})
 
+    def clear_and_timing_max_stock(self, clear_stocks):
+        """
+        批量沽清库存并在次日2:00开始置满
+        :param clearStocks:店铺Id及商品Id的列表
+        """
+        return self.__client.call("eleme.product.item.clearAndTimingMaxStock", {"clearStocks": clear_stocks})
+
     def get_item_by_shop_id_and_extend_code(self, shop_id, extend_code):
         """
         根据商品扩展码获取商品

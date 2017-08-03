@@ -15,3 +15,9 @@ class UserService:
         """
         return self.__client.call("eleme.user.getUser", {})
 
+    def get_phone_number(self):
+        """
+        获取当前授权账号的手机号,特权接口仅部分帐号可以调用
+        """
+        return self.__client.call("eleme.user.getPhoneNumber", {})
+
