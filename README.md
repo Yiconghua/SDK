@@ -176,6 +176,17 @@
 
 ## CHANGELOG:
 
+### [v1.8.0]
+    Release Date : 2017-09-22
+
+
+- [feature] 新增活动服务相关接口，具体参见openapi活动文档
+- [feature] 订单增加索赔相关的接口，具体参见openapi订单文档
+- [feature] 商品接口增加 set_order_packing_fee 设置餐盒费接口
+- [feature] 增加ugc评价服务，具体参见openapi ugc文档
+
+
+
 ### [v1.7.0]
     Release Date : 2017-08-03
 

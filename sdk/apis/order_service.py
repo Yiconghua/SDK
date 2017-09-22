@@ -231,3 +231,24 @@ class OrderService:
         """
         return self.__client.call("eleme.order.getAllOrders", {"shopId": shop_id, "pageNo": page_no, "pageSize": page_size, "date": date})
 
+    def query_supported_compensation_orders(self, order_ids):
+        """
+        批量查询订单是否支持索赔
+        :param orderIds:索赔订单Id的列表
+        """
+        return self.__client.call("eleme.order.querySupportedCompensationOrders", {"orderIds": order_ids})
+
+    def batch_apply_compensations(self, requests):
+        """
+        批量申请索赔
+        :param requests:索赔请求的列表
+        """
+        return self.__client.call("eleme.order.batchApplyCompensations", {"requests": requests})
+
+    def query_compensation_orders(self, order_ids):
+        """
+        批量查询索赔结果
+        :param orderIds:索赔订单Id的列表
+        """
+        return self.__client.call("eleme.order.queryCompensationOrders", {"orderIds": order_ids})
+

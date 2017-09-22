@@ -9,6 +9,27 @@ class ProductService:
     def __init__(self, client):
         self.__client = client
 
+    def upload_image(self, image):
+        """
+        上传图片，返回图片的hash值
+        :param image:文件内容base64编码值
+        """
+        return self.__client.call("eleme.file.uploadImage", {"image": image})
+
+    def upload_image_with_remote_url(self, url):
+        """
+        通过远程URL上传图片，返回图片的hash值
+        :param url:远程Url地址
+        """
+        return self.__client.call("eleme.file.uploadImageWithRemoteUrl", {"url": url})
+
+    def get_uploaded_url(self, hash):
+        """
+        获取上传文件的访问URL，返回文件的Url地址
+        :param hash:图片hash值
+        """
+        return self.__client.call("eleme.file.getUploadedUrl", {"hash": hash})
+
     def get_shop_categories(self, shop_id):
         """
         查询店铺商品分类
@@ -105,26 +126,14 @@ class ProductService:
         """
         return self.__client.call("eleme.product.category.getBackCategory", {"shopId": shop_id})
 
-    def upload_image(self, image):
+    def set_category_type(self, shop_id, category_id, category_type):
         """
-        上传图片，返回图片的hash值
-        :param image:文件内容base64编码值
+        设置分类类型
+        :param shopId:店铺Id
+        :param categoryId:商品分类Id
+        :param categoryType:分类类型
         """
-        return self.__client.call("eleme.file.uploadImage", {"image": image})
-
-    def upload_image_with_remote_url(self, url):
-        """
-        通过远程URL上传图片，返回图片的hash值
-        :param url:远程Url地址
-        """
-        return self.__client.call("eleme.file.uploadImageWithRemoteUrl", {"url": url})
-
-    def get_uploaded_url(self, hash):
-        """
-        获取上传文件的访问URL，返回文件的Url地址
-        :param hash:图片hash值
-        """
-        return self.__client.call("eleme.file.getUploadedUrl", {"hash": hash})
+        return self.__client.call("eleme.product.category.setCategoryType", {"shopId": shop_id, "categoryId": category_id, "categoryType": category_type})
 
     def get_items_by_category_id(self, category_id):
         """
@@ -266,4 +275,13 @@ class ProductService:
         :param shopId:店铺Id
         """
         return self.__client.call("eleme.product.item.getItemIdsHasActivityByShopId", {"shopId": shop_id})
+
+    def set_order_packing_fee(self, shop_id, status, packing_fee):
+        """
+        设置订单餐盒费
+        :param shopId: 店铺ID
+        :param status:是否按照订单设置餐盒费
+        :param packingFee:订单餐盒费费用
+        """
+        return self.__client.call("eleme.product.item.setOrderPackingFee", {"shopId": shop_id, "status": status, "packingFee": packing_fee})
 
