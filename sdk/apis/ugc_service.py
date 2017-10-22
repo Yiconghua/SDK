@@ -75,15 +75,16 @@ class UgcService:
         """
         return self.__client.call("eleme.ugc.getOrderRatesByShopAndRating", {"shopId": shop_id, "score": score, "startTime": start_time, "endTime": end_time, "offset": offset, "pageSize": page_size})
 
-    def get_item_rates_by_item_id(self, item_id, start_time, end_time, offset):
+    def get_item_rates_by_item_id(self, item_id, start_time, end_time, offset, page_size):
         """
         获取单个商品的评论
         :param itemId: 商品id
         :param startTime:  开始时间,只能查询最近90天的数据
         :param endTime:  结束时间
         :param offset:页面偏移量
+        :param pageSize:页面大小
         """
-        return self.__client.call("eleme.ugc.getItemRatesByItemId", {"itemId": item_id, "startTime": start_time, "endTime": end_time, "offset": offset})
+        return self.__client.call("eleme.ugc.getItemRatesByItemId", {"itemId": item_id, "startTime": start_time, "endTime": end_time, "offset": offset, "pageSize": page_size})
 
     def get_item_rates_by_item_ids(self, item_ids, start_time, end_time, offset, page_size):
         """

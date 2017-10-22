@@ -9,6 +9,44 @@ class ActivityService:
     def __init__(self, client):
         self.__client = client
 
+    def create_coupon_activity(self, create_info):
+        """
+        创建代金券活动
+        :param createInfo:创建代金券活动的结构体
+        """
+        return self.__client.call("eleme.activity.coupon.createCouponActivity", {"createInfo": create_info})
+
+    def give_out_coupons(self, shop_id, coupon_activity_id, mobiles):
+        """
+        向指定用户发放代金券
+        :param shopId:店铺Id
+        :param couponActivityId:代金券活动Id
+        :param mobiles:需要发放代金券的用户手机号列表
+        """
+        return self.__client.call("eleme.activity.coupon.giveOutCoupons", {"shopId": shop_id, "couponActivityId": coupon_activity_id, "mobiles": mobiles})
+
+    def query_coupon_activities(self, shop_id, coupon_activity_type, activity_status, page_no, page_size):
+        """
+        分页查询店铺代金券活动信息
+        :param shopId:店铺Id
+        :param couponActivityType:代金券活动类型
+        :param activityStatus:活动状态
+        :param pageNo:页码（第几页）
+        :param pageSize:每页数量
+        """
+        return self.__client.call("eleme.activity.coupon.queryCouponActivities", {"shopId": shop_id, "couponActivityType": coupon_activity_type, "activityStatus": activity_status, "pageNo": page_no, "pageSize": page_size})
+
+    def query_received_coupon_details(self, shop_id, coupon_activity_id, coupon_status, page_no, page_size):
+        """
+        分页查询店铺代金券领取详情
+        :param shopId:店铺Id
+        :param couponActivityId:代金券活动Id
+        :param couponStatus:代金券状态
+        :param pageNo:页码（第几页）
+        :param pageSize:每页数量
+        """
+        return self.__client.call("eleme.activity.coupon.queryReceivedCouponDetails", {"shopId": shop_id, "couponActivityId": coupon_activity_id, "couponStatus": coupon_status, "pageNo": page_no, "pageSize": page_size})
+
     def get_invited_activity_infos(self, shop_id):
         """
         查询店铺邀约活动信息
