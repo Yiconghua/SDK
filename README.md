@@ -176,6 +176,11 @@
 
 ## CHANGELOG:
 
+### [1.9.0]
+Release Date : 2017-10-27
+
+- [Feature] 新增了代金券和零元试吃的活动接口
+
 ### [v1.8.0]
     Release Date : 2017-09-22
 
