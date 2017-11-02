@@ -30,6 +30,13 @@ class ProductService:
         """
         return self.__client.call("eleme.file.getUploadedUrl", {"hash": hash})
 
+    def get_image_url(self, hash):
+        """
+        获取上传图片的url地址(新版)
+        :param hash:图片hash值
+        """
+        return self.__client.call("eleme.file.getImageUrl", {"hash": hash})
+
     def get_shop_categories(self, shop_id):
         """
         查询店铺商品分类
@@ -103,6 +110,13 @@ class ProductService:
         """
         return self.__client.call("eleme.product.category.removeCategory", {"categoryId": category_id})
 
+    def invalid_category(self, category_id):
+        """
+        删除商品分类(新版)
+        :param categoryId:商品分类Id
+        """
+        return self.__client.call("eleme.product.category.invalidCategory", {"categoryId": category_id})
+
     def set_category_positions(self, shop_id, category_ids):
         """
         设置分类排序
@@ -110,6 +124,14 @@ class ProductService:
         :param categoryIds:需要排序的分类Id
         """
         return self.__client.call("eleme.product.category.setCategoryPositions", {"shopId": shop_id, "categoryIds": category_ids})
+
+    def set_category_sequence(self, shop_id, category_ids):
+        """
+        设置分类排序(新版)
+        :param shopId:饿了么店铺Id
+        :param categoryIds:需要排序的全部一级分类Id
+        """
+        return self.__client.call("eleme.product.category.setCategorySequence", {"shopId": shop_id, "categoryIds": category_ids})
 
     def set_category_positions_with_children(self, shop_id, category_with_children_ids):
         """
@@ -202,6 +224,13 @@ class ProductService:
         """
         return self.__client.call("eleme.product.item.batchOnShelf", {"specIds": spec_ids})
 
+    def batch_list_items(self, item_ids):
+        """
+        批量上架商品(新版)
+        :param itemIds:商品ID列表
+        """
+        return self.__client.call("eleme.product.item.batchListItems", {"itemIds": item_ids})
+
     def batch_off_shelf(self, spec_ids):
         """
         批量下架商品
@@ -209,12 +238,26 @@ class ProductService:
         """
         return self.__client.call("eleme.product.item.batchOffShelf", {"specIds": spec_ids})
 
+    def batch_delist_items(self, item_ids):
+        """
+        批量下架商品(新版)
+        :param itemIds:商品ID列表
+        """
+        return self.__client.call("eleme.product.item.batchDelistItems", {"itemIds": item_ids})
+
     def remove_item(self, item_id):
         """
         删除商品
         :param itemId:商品Id
         """
         return self.__client.call("eleme.product.item.removeItem", {"itemId": item_id})
+
+    def invalid_item(self, item_id):
+        """
+        删除商品(新版)
+        :param itemId:商品Id
+        """
+        return self.__client.call("eleme.product.item.invalidItem", {"itemId": item_id})
 
     def batch_remove_items(self, item_ids):
         """
@@ -229,6 +272,13 @@ class ProductService:
         :param specStocks:商品以及规格库存列表
         """
         return self.__client.call("eleme.product.item.batchUpdateSpecStocks", {"specStocks": spec_stocks})
+
+    def batch_update_stock(self, stock_map):
+        """
+        批量更新商品库存(新版)
+        :param stockMap:商品规格ID和库存设值的映射
+        """
+        return self.__client.call("eleme.product.item.batchUpdateStock", {"stockMap": stock_map})
 
     def set_item_positions(self, category_id, item_ids):
         """
@@ -275,6 +325,13 @@ class ProductService:
         :param shopId:店铺Id
         """
         return self.__client.call("eleme.product.item.getItemIdsHasActivityByShopId", {"shopId": shop_id})
+
+    def get_shop_sales_items(self, shop_id):
+        """
+        查询店铺活动商品(新版)
+        :param shopId:店铺Id
+        """
+        return self.__client.call("eleme.product.item.getShopSalesItems", {"shopId": shop_id})
 
     def set_order_packing_fee(self, shop_id, status, packing_fee):
         """
