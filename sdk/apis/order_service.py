@@ -252,3 +252,10 @@ class OrderService:
         """
         return self.__client.call("eleme.order.queryCompensationOrders", {"orderIds": order_ids})
 
+    def get_delivery_fee_for_crowd(self, order_id):
+        """
+        选推订单询价,获取配送费
+        :param orderId:订单Id
+        """
+        return self.__client.call("eleme.order.getDeliveryFeeForCrowd", {"orderId": order_id})
+
