@@ -177,7 +177,7 @@
 ## CHANGELOG:
 
 ### [1.10.0]
-Release Date : 2017-10-27
+Release Date : 2017-11-21
 
 - [Feature] 新增众包查询配送费接口
 
