@@ -39,21 +39,24 @@ class RpcClient:
         self.log = config.get_log()
 
     def call(self, action, parameters):
+        timestamp = int(round(time.time() * 1000))
+        request_id = self.generate_request_id()
+        eleme_request_id = request_id + '|' + str(timestamp)
         protocol = {
             "nop": "1.0.0",
-            "id": str(uuid.uuid4()),
+            "id": request_id,
             "action": action,
             "token": json.loads(self.token)['access_token'],
             "metas": {
                 "app_key": self.app_key,
-                "timestamp": int(time.time())
+                "timestamp": timestamp
             },
             "params": parameters
         }
 
         protocol['signature'] = self.generate_signature(protocol)
 
-        result = self.post(protocol)
+        result = self.post(protocol, eleme_request_id)
         return self.parse_result(result)
 
     def parse_result(self, result):
@@ -99,12 +102,17 @@ class RpcClient:
         hash_value = hashlib.md5(splice.encode("UTF-8")).hexdigest()
         return hash_value.upper()
 
-    def post(self, data):
+    def generate_request_id(self):
+        req_id = str(uuid.uuid4())
+        return req_id.upper().replace('-', '')
+
+    def post(self, data, eleme_request_id):
         self.log.info('request eleme api:{}'.format(json.dumps(data).encode('utf-8')))
         headers = {
             "Content-Type": "application/json; charset=utf-8",
             "Content-Encoding": "gzip, deflate",
-            "User-Agent": "eleme-openapi-python-sdk"
+            "User-Agent": "eleme-openapi-python-sdk",
+            "x-eleme-requestid": eleme_request_id
         }
         try:
             request = Request(self.remote_url, json.dumps(data).encode('utf-8'), headers)
