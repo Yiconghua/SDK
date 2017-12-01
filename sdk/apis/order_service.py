@@ -102,6 +102,7 @@ class OrderService:
     def delivery_by_self_lite(self, order_id):
         """
         配送异常或者物流拒单后选择自行配送(推荐)
+ 全推调用
         :param orderId:订单Id
         """
         return self.__client.call("eleme.order.deliveryBySelfLite", {"orderId": order_id})
@@ -116,6 +117,7 @@ class OrderService:
     def no_more_delivery_lite(self, order_id):
         """
         配送异常或者物流拒单后选择不再配送(推荐)
+ 全推调用
         :param orderId:订单Id
         """
         return self.__client.call("eleme.order.noMoreDeliveryLite", {"orderId": order_id})
@@ -254,7 +256,7 @@ class OrderService:
 
     def get_delivery_fee_for_crowd(self, order_id):
         """
-        选推订单询价,获取配送费
+        众包订单询价，获取配送费
         :param orderId:订单Id
         """
         return self.__client.call("eleme.order.getDeliveryFeeForCrowd", {"orderId": order_id})
