@@ -162,3 +162,23 @@ class UgcService:
         """
         return self.__client.call("eleme.ugc.replyRatesByItemIds", {"itemIds": item_ids, "reply": reply, "startTime": start_time, "endTime": end_time})
 
+    def reply_rate_by_rate_id_and_shop_id(self, rate_id, shop_id, reply_type, reply):
+        """
+        通过rateId和shopId 回复指定类型的评论
+        :param rateId:评论编号
+        :param shopId: 餐厅id
+        :param replyType:评论类型
+        :param reply:回复的内容
+        """
+        return self.__client.call("eleme.ugc.replyRateByRateIdAndShopId", {"rateId": rate_id, "shopId": shop_id, "replyType": reply_type, "reply": reply})
+
+    def reply_rate_by_rate_ids_and_shop_id(self, rate_ids, shop_id, reply_type, reply):
+        """
+        通过rateIds和shopId 批量回复指定类型的评论
+        :param rateIds: 评论编号
+        :param shopId: 餐厅id
+        :param replyType:评论类型
+        :param reply:回复的内容
+        """
+        return self.__client.call("eleme.ugc.replyRateByRateIdsAndShopId", {"rateIds": rate_ids, "shopId": shop_id, "replyType": reply_type, "reply": reply})
+

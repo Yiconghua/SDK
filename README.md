@@ -175,12 +175,16 @@
 
 
 ## CHANGELOG:
+### [1.11.0]
+Release Date : 2017-12-24
+
+- [Feature] 订单服务新增出餐和评价骑手接口
+- [Feature] 订单评论服务新增新版回复评论接口
 
 ### [1.10.0]
 Release Date : 2017-11-21
 
 - [Feature] 新增众包查询配送费接口
-
 
 ### [1.9.0]
 Release Date : 2017-10-27

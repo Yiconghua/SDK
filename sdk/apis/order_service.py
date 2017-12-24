@@ -261,3 +261,63 @@ class OrderService:
         """
         return self.__client.call("eleme.order.getDeliveryFeeForCrowd", {"orderId": order_id})
 
+    def evaluate_rider(self, order_id, evaluation_info):
+        """
+        评价骑手
+        :param orderId:订单Id
+        :param evaluationInfo:评价信息
+        """
+        return self.__client.call("eleme.order.evaluateRider", {"orderId": order_id, "evaluationInfo": evaluation_info})
+
+    def mget_evaluation_infos(self, order_ids):
+        """
+        批量获取骑手评价信息
+        :param orderIds:订单Id的列表
+        """
+        return self.__client.call("eleme.order.mgetEvaluationInfos", {"orderIds": order_ids})
+
+    def mget_evaluation_status(self, order_ids):
+        """
+        批量获取是否可以评价骑手
+        :param orderIds:订单Id的列表
+        """
+        return self.__client.call("eleme.order.mgetEvaluationStatus", {"orderIds": order_ids})
+
+    def mget_delivery_tip_infos(self, order_ids):
+        """
+        批量获取订单加小费信息
+        :param orderIds:订单Id的列表
+        """
+        return self.__client.call("eleme.order.mgetDeliveryTipInfos", {"orderIds": order_ids})
+
+    def add_delivery_tip_by_order_id(self, order_id, tip):
+        """
+        订单加小费
+        :param orderId:订单Id
+        :param tip:小费金额
+        """
+        return self.__client.call("eleme.order.addDeliveryTipByOrderId", {"orderId": order_id, "tip": tip})
+
+    def apply_refund(self, order_id, type, remark):
+        """
+        主动发起退单
+        :param orderId:订单Id
+        :param type:取消原因
+        :param remark:备注说明
+        """
+        return self.__client.call("eleme.order.applyRefund", {"orderId": order_id, "type": type, "remark": remark})
+
+    def set_order_prepared(self, order_id):
+        """
+        非自配送餐厅标记已出餐
+        :param orderId:订单Id
+        """
+        return self.__client.call("eleme.order.setOrderPrepared", {"orderId": order_id})
+
+    def get_prepared_times_by_order_ids(self, order_ids):
+        """
+        查询已出餐列表
+        :param orderIds:查询已出餐订单Id的列表
+        """
+        return self.__client.call("eleme.order.getPreparedTimesByOrderIds", {"orderIds": order_ids})
+
