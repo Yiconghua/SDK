@@ -48,3 +48,12 @@ class ShopService:
         """
         return self.__client.call("eleme.shop.setOnlineRefund", {"shopId": shop_id, "enable": enable})
 
+    def set_booking_status(self, shop_id, enabled, max_booking_days):
+        """
+        设置是否支持预定单及预定天数
+        :param shopId:店铺id
+        :param enabled:是否支持预订
+        :param maxBookingDays:最大预定天数
+        """
+        return self.__client.call("eleme.shop.setBookingStatus", {"shopId": shop_id, "enabled": enabled, "maxBookingDays": max_booking_days})
+
