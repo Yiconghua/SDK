@@ -342,3 +342,10 @@ class ProductService:
         """
         return self.__client.call("eleme.product.item.setOrderPackingFee", {"shopId": shop_id, "status": status, "packingFee": packing_fee})
 
+    def query_item_by_page(self, query_page):
+        """
+        分页获取店铺下的商品
+        :param queryPage:分页查询参数
+        """
+        return self.__client.call("eleme.product.item.queryItemByPage", {"queryPage": query_page})
+

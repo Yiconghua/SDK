@@ -176,6 +176,11 @@
 
 ## CHANGELOG:
 
+### [1.13.0]
+Release Date : 2018-1-5
+
+- [Feature] 商品服务新增根据店铺 Id 查询商品接口
+
 ### [1.12.0]
 Release Date : 2017-12-29
 
