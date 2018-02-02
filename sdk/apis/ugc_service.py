@@ -108,24 +108,6 @@ class UgcService:
         """
         return self.__client.call("eleme.ugc.getUnreplyItemRatesByItemIds", {"itemIds": item_ids, "startTime": start_time, "endTime": end_time, "offset": offset, "pageSize": page_size})
 
-    def reply_rate_by_rate_id(self, rate_id, reply_type, reply):
-        """
-        回复指定类型的评论
-        :param rateId:评论编号
-        :param replyType:评论类型
-        :param reply:回复的内容
-        """
-        return self.__client.call("eleme.ugc.replyRateByRateId", {"rateId": rate_id, "replyType": reply_type, "reply": reply})
-
-    def reply_rate_by_rate_ids(self, rate_ids, reply_type, reply):
-        """
-        回复指定类型的评论
-        :param rateIds: 评论编号
-        :param replyType:评论类型
-        :param reply:回复的内容
-        """
-        return self.__client.call("eleme.ugc.replyRateByRateIds", {"rateIds": rate_ids, "replyType": reply_type, "reply": reply})
-
     def reply_rate_by_order_id(self, order_id, reply):
         """
         回复订单未回复的评论
@@ -181,4 +163,33 @@ class UgcService:
         :param reply:回复的内容
         """
         return self.__client.call("eleme.ugc.replyRateByRateIdsAndShopId", {"rateIds": rate_ids, "shopId": shop_id, "replyType": reply_type, "reply": reply})
+
+    def send_coupon_by_order_id(self, order_id, coupon):
+        """
+        根据订单ID赠送代金券给该订单的评价用户
+        :param orderId: 订单编号
+        :param coupon:需要赠送的代金券信息
+        """
+        return self.__client.call("eleme.ugc.sendCouponByOrderId", {"orderId": order_id, "coupon": coupon})
+
+    def get_order_coupon_status(self, order_id):
+        """
+        根据订单ID获取该订单评价用户的可赠券状态
+        :param orderId: 订单编号
+        """
+        return self.__client.call("eleme.ugc.getOrderCouponStatus", {"orderId": order_id})
+
+    def get_coupons_by_order_ids(self, order_ids):
+        """
+        根据订单ID集合获取该订单的已赠券信息集合
+        :param orderIds:订单编号集合
+        """
+        return self.__client.call("eleme.ugc.getCouponsByOrderIds", {"orderIds": order_ids})
+
+    def get_recommend_coupon_by_shop_id(self, shop_id):
+        """
+        获取店铺的推荐赠送代金券信息
+        :param shopId:餐厅ID
+        """
+        return self.__client.call("eleme.ugc.getRecommendCouponByShopId", {"shopId": shop_id})
 

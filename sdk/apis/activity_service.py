@@ -25,6 +25,15 @@ class ActivityService:
         """
         return self.__client.call("eleme.activity.coupon.giveOutCoupons", {"shopId": shop_id, "couponActivityId": coupon_activity_id, "mobiles": mobiles})
 
+    def present_coupon(self, shop_id, mobile, coupon_template):
+        """
+        定向赠红包
+        :param shopId:店铺Id
+        :param mobile:需要发放红包的用户手机号
+        :param couponTemplate:定向赠红包的模板信息
+        """
+        return self.__client.call("eleme.activity.coupon.presentCoupon", {"shopId": shop_id, "mobile": mobile, "couponTemplate": coupon_template})
+
     def query_coupon_activities(self, shop_id, coupon_activity_type, activity_status, page_no, page_size):
         """
         分页查询店铺代金券活动信息
