@@ -102,7 +102,6 @@ class OrderService:
     def delivery_by_self_lite(self, order_id):
         """
         配送异常或者物流拒单后选择自行配送(推荐)
- 全推调用
         :param orderId:订单Id
         """
         return self.__client.call("eleme.order.deliveryBySelfLite", {"orderId": order_id})
@@ -117,7 +116,6 @@ class OrderService:
     def no_more_delivery_lite(self, order_id):
         """
         配送异常或者物流拒单后选择不再配送(推荐)
- 全推调用
         :param orderId:订单Id
         """
         return self.__client.call("eleme.order.noMoreDeliveryLite", {"orderId": order_id})
@@ -320,4 +318,11 @@ class OrderService:
         :param orderIds:查询已出餐订单Id的列表
         """
         return self.__client.call("eleme.order.getPreparedTimesByOrderIds", {"orderIds": order_ids})
+
+    def mget_user_simple_info_by_order_ids(self, order_ids):
+        """
+        查询顾客联系方式
+        :param orderIds:订单ID的列表
+        """
+        return self.__client.call("eleme.order.mgetUserSimpleInfoByOrderIds", {"orderIds": order_ids})
 

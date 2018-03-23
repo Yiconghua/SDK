@@ -176,6 +176,11 @@
 
 ## CHANGELOG:
 
+### [1.15.0]
+Release Date : 2018-3-23
+
+- [Feature] 新增若干新服务
+
 ### [1.14.1]
 Release Date : 2018-2-2
 

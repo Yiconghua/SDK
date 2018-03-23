@@ -11,17 +11,17 @@ class ActivityService:
 
     def create_coupon_activity(self, create_info):
         """
-        创建代金券活动
-        :param createInfo:创建代金券活动的结构体
+        创建红包活动
+        :param createInfo:创建红包活动的结构体
         """
         return self.__client.call("eleme.activity.coupon.createCouponActivity", {"createInfo": create_info})
 
     def give_out_coupons(self, shop_id, coupon_activity_id, mobiles):
         """
-        向指定用户发放代金券
+        向指定用户发放红包
         :param shopId:店铺Id
-        :param couponActivityId:代金券活动Id
-        :param mobiles:需要发放代金券的用户手机号列表
+        :param couponActivityId:红包活动Id
+        :param mobiles:需要发放红包的用户手机号列表
         """
         return self.__client.call("eleme.activity.coupon.giveOutCoupons", {"shopId": shop_id, "couponActivityId": coupon_activity_id, "mobiles": mobiles})
 
@@ -36,9 +36,9 @@ class ActivityService:
 
     def query_coupon_activities(self, shop_id, coupon_activity_type, activity_status, page_no, page_size):
         """
-        分页查询店铺代金券活动信息
+        分页查询店铺红包活动信息
         :param shopId:店铺Id
-        :param couponActivityType:代金券活动类型
+        :param couponActivityType:红包活动类型
         :param activityStatus:活动状态
         :param pageNo:页码（第几页）
         :param pageSize:每页数量
@@ -47,14 +47,48 @@ class ActivityService:
 
     def query_received_coupon_details(self, shop_id, coupon_activity_id, coupon_status, page_no, page_size):
         """
-        分页查询店铺代金券领取详情
+        分页查询店铺红包领取详情
         :param shopId:店铺Id
-        :param couponActivityId:代金券活动Id
-        :param couponStatus:代金券状态
+        :param couponActivityId:红包活动Id
+        :param couponStatus:红包状态
         :param pageNo:页码（第几页）
         :param pageSize:每页数量
         """
         return self.__client.call("eleme.activity.coupon.queryReceivedCouponDetails", {"shopId": shop_id, "couponActivityId": coupon_activity_id, "couponStatus": coupon_status, "pageNo": page_no, "pageSize": page_size})
+
+    def host_shops(self, shop_ids, hosted_type, discounts):
+        """
+        托管单店红包服务
+        :param shopIds:餐厅id列表,长度不能超过20
+        :param hostedType:红包服务业务类型,暂只支持超级会员,"SUPER_VIP"
+        :param discounts:扣减额,请设置在[4,15]元,小数点后最多1位
+        """
+        return self.__client.call("eleme.activity.coupon.hostShops", {"shopIds": shop_ids, "hostedType": hosted_type, "discounts": discounts})
+
+    def query_host_info(self, shop_ids, hosted_type):
+        """
+        查询红包服务托管情况
+        :param shopIds:餐厅id列表,长度不能超过20
+        :param hostedType:红包服务业务类型,暂只支持超级会员,"SUPER_VIP"
+        """
+        return self.__client.call("eleme.activity.coupon.queryHostInfo", {"shopIds": shop_ids, "hostedType": hosted_type})
+
+    def unhost_shops(self, shop_ids, hosted_type):
+        """
+        取消托管单店红包服务
+        :param shopIds:餐厅id列表,长度不能超过20
+        :param hostedType:红包服务业务类型,暂只支持超级会员,"SUPER_VIP"
+        """
+        return self.__client.call("eleme.activity.coupon.unhostShops", {"shopIds": shop_ids, "hostedType": hosted_type})
+
+    def rehost_shop(self, shop_id, hosted_type, o_activity_service_details):
+        """
+        更改单店红包服务托管方式
+        :param shopId:店铺Id
+        :param hostedType:红包服务业务类型,暂只支持超级会员,"SUPER_VIP"
+        :param oActivityServiceDetails:服务内容
+        """
+        return self.__client.call("eleme.activity.coupon.rehostShop", {"shopId": shop_id, "hostedType": hosted_type, "oActivityServiceDetails": o_activity_service_details})
 
     def query_invited_food_activities(self, shop_id):
         """

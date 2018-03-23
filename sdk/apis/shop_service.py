@@ -57,3 +57,10 @@ class ShopService:
         """
         return self.__client.call("eleme.shop.setBookingStatus", {"shopId": shop_id, "enabled": enabled, "maxBookingDays": max_booking_days})
 
+    def get_oid_by_shop_ids(self, shop_ids):
+        """
+        批量通过店铺Id获取Oid
+        :param shopIds:店铺Id的列表
+        """
+        return self.__client.call("eleme.shop.getOidByShopIds", {"shopIds": shop_ids})
+
