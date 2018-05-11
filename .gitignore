@@ -15,8 +15,12 @@
 # Directories
 /*/.iml
 
+# VS Code
+.vscode
+
 /demo
 /generatetool
 /build
 /dist
 /eleme.openapi.python.sdk.egg-info
+demoTest.py

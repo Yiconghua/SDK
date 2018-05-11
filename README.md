@@ -175,6 +175,10 @@
 
 
 ## CHANGELOG:
+### [1.16.1]
+Release Date : 2018-5-11
+- [Feature] 新增授权码换取OpenId接口
+- [Feature] 活动服务新增若干接口
 
 ### [1.15.0]
 Release Date : 2018-3-23

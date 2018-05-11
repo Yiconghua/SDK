@@ -13,6 +13,10 @@ class Config:
 
     __log = None
 
+    __host_url = "https://open-api.shop.ele.me"
+
+    __sandbox_host_url = "https://open-api-sandbox.shop.ele.me"
+    
     def __init__(self, sandbox, app_key, secret, callback_url=None):
         self.__sandbox = sandbox
         self.__app_key = app_key
@@ -48,7 +52,7 @@ class Config:
 
     def get_server_url(self):
         if not self.__base_url:
-            return self.__sandbox and "https://open-api-sandbox.shop.ele.me" or "https://open-api.shop.ele.me"
+            return self.__sandbox and self.__sandbox_host_url or self.__host_url
         else:
             return self.__base_url
 
@@ -60,3 +64,6 @@ class Config:
 
     def get_authorize_url(self):
         return self.get_server_url() + "/authorize"
+
+    def get_openId_url(self):
+        return self.get_server_url() + "/identity"

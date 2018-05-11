@@ -90,6 +90,33 @@ class ActivityService:
         """
         return self.__client.call("eleme.activity.coupon.rehostShop", {"shopId": shop_id, "hostedType": hosted_type, "oActivityServiceDetails": o_activity_service_details})
 
+    def present_target_coupons(self, shop_id, target_list, target_list_type, target_coupon_detail):
+        """
+        定向赠红包(单店红包)
+        :param shopId:店铺id
+        :param targetList:目标列表
+        :param targetListType:目标类型
+        :param targetCouponDetail:定向赠红包模板细节
+        """
+        return self.__client.call("eleme.activity.coupon.presentTargetCoupons", {"shopId": shop_id, "targetList": target_list, "targetListType": target_list_type, "targetCouponDetail": target_coupon_detail})
+
+    def present_common_target_coupons(self, chain_id, target_list, target_list_type, common_target_coupon_detail):
+        """
+        定向赠通用红包
+        :param chainId:连锁店id
+        :param targetList:目标列表
+        :param targetListType:目标类型
+        :param commonTargetCouponDetail:通用定向赠红包模板细节
+        """
+        return self.__client.call("eleme.activity.coupon.presentCommonTargetCoupons", {"chainId": chain_id, "targetList": target_list, "targetListType": target_list_type, "commonTargetCouponDetail": common_target_coupon_detail})
+
+    def query_target_coupon_info(self, target_coupon_query_request):
+        """
+        分页查询店铺的定向赠红包信息
+        :param targetCouponQueryRequest:定向赠红包查询入参对象
+        """
+        return self.__client.call("eleme.activity.coupon.queryTargetCouponInfo", {"targetCouponQueryRequest": target_coupon_query_request})
+
     def query_invited_food_activities(self, shop_id):
         """
         通过店铺Id查询该店铺被邀约的美食活动
