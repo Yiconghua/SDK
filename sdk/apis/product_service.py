@@ -349,3 +349,10 @@ class ProductService:
         """
         return self.__client.call("eleme.product.item.queryItemByPage", {"queryPage": query_page})
 
+    def get_material_tree(self, shop_id):
+        """
+        获取原材料树
+        :param shopId:店铺ID
+        """
+        return self.__client.call("eleme.product.item.getMaterialTree", {"shopId": shop_id})
+
