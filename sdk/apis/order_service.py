@@ -30,13 +30,6 @@ class OrderService:
         """
         return self.__client.call("eleme.order.confirmOrderLite", {"orderId": order_id})
 
-    def confirm_order(self, order_id):
-        """
-        确认订单
-        :param orderId:订单Id
-        """
-        return self.__client.call("eleme.order.confirmOrder", {"orderId": order_id})
-
     def cancel_order_lite(self, order_id, type, remark):
         """
         取消订单(推荐)
@@ -46,28 +39,12 @@ class OrderService:
         """
         return self.__client.call("eleme.order.cancelOrderLite", {"orderId": order_id, "type": type, "remark": remark})
 
-    def cancel_order(self, order_id, type, remark):
-        """
-        取消订单
-        :param orderId:订单Id
-        :param type:取消原因
-        :param remark:备注说明
-        """
-        return self.__client.call("eleme.order.cancelOrder", {"orderId": order_id, "type": type, "remark": remark})
-
     def agree_refund_lite(self, order_id):
         """
         同意退单/同意取消单(推荐)
         :param orderId:订单Id
         """
         return self.__client.call("eleme.order.agreeRefundLite", {"orderId": order_id})
-
-    def agree_refund(self, order_id):
-        """
-        同意退单/同意取消单
-        :param orderId:订单Id
-        """
-        return self.__client.call("eleme.order.agreeRefund", {"orderId": order_id})
 
     def disagree_refund_lite(self, order_id, reason):
         """
@@ -76,14 +53,6 @@ class OrderService:
         :param reason:商家不同意退单原因
         """
         return self.__client.call("eleme.order.disagreeRefundLite", {"orderId": order_id, "reason": reason})
-
-    def disagree_refund(self, order_id, reason):
-        """
-        不同意退单/不同意取消单
-        :param orderId:订单Id
-        :param reason:商家不同意退单原因
-        """
-        return self.__client.call("eleme.order.disagreeRefund", {"orderId": order_id, "reason": reason})
 
     def get_delivery_state_record(self, order_id):
         """
@@ -106,26 +75,12 @@ class OrderService:
         """
         return self.__client.call("eleme.order.deliveryBySelfLite", {"orderId": order_id})
 
-    def delivery_by_self(self, order_id):
-        """
-        配送异常或者物流拒单后选择自行配送
-        :param orderId:订单Id
-        """
-        return self.__client.call("eleme.order.deliveryBySelf", {"orderId": order_id})
-
     def no_more_delivery_lite(self, order_id):
         """
         配送异常或者物流拒单后选择不再配送(推荐)
         :param orderId:订单Id
         """
         return self.__client.call("eleme.order.noMoreDeliveryLite", {"orderId": order_id})
-
-    def no_more_delivery(self, order_id):
-        """
-        配送异常或者物流拒单后选择不再配送
-        :param orderId:订单Id
-        """
-        return self.__client.call("eleme.order.noMoreDelivery", {"orderId": order_id})
 
     def received_order_lite(self, order_id):
         """
@@ -134,12 +89,21 @@ class OrderService:
         """
         return self.__client.call("eleme.order.receivedOrderLite", {"orderId": order_id})
 
-    def received_order(self, order_id):
+    def start_delivery_by_self(self, order_id, phone):
         """
-        订单确认送达
+        (自配送)订单确认送出
         :param orderId:订单ID
+        :param phone:配送者电话
         """
-        return self.__client.call("eleme.order.receivedOrder", {"orderId": order_id})
+        return self.__client.call("eleme.order.startDeliveryBySelf", {"orderId": order_id, "phone": phone})
+
+    def complete_delivery_by_self(self, order_id, phone):
+        """
+        (自配送)订单确认送达
+        :param orderId:订单ID
+        :param phone:配送者电话
+        """
+        return self.__client.call("eleme.order.completeDeliveryBySelf", {"orderId": order_id, "phone": phone})
 
     def reply_reminder(self, remind_id, type, content):
         """

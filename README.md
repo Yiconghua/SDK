@@ -176,6 +176,13 @@
 
 ## CHANGELOG:
 
+### [1.17.2]
+Release Date : 2018-6-08
+- [Feature] 活动服务新增接口
+- [Feature] 活动服务下线接口
+- [Feature] 订单服务新增接口
+- [Feature] 订单服务下线接口
+
 ### [1.16.2]
 Release Date : 2018-5-18
 - [Feature] 商品服务新增接口
