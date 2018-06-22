@@ -176,6 +176,10 @@
 
 ## CHANGELOG:
 
+### [1.17.3]
+Release Date : 2018-6-22
+- [Feature] 店铺服务新增接口
+
 ### [1.17.2]
 Release Date : 2018-6-08
 - [Feature] 活动服务新增接口
