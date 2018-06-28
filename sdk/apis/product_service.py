@@ -9,34 +9,6 @@ class ProductService:
     def __init__(self, client):
         self.__client = client
 
-    def upload_image(self, image):
-        """
-        上传图片，返回图片的hash值
-        :param image:文件内容base64编码值
-        """
-        return self.__client.call("eleme.file.uploadImage", {"image": image})
-
-    def upload_image_with_remote_url(self, url):
-        """
-        通过远程URL上传图片，返回图片的hash值
-        :param url:远程Url地址
-        """
-        return self.__client.call("eleme.file.uploadImageWithRemoteUrl", {"url": url})
-
-    def get_uploaded_url(self, hash):
-        """
-        获取上传文件的访问URL，返回文件的Url地址
-        :param hash:图片hash值
-        """
-        return self.__client.call("eleme.file.getUploadedUrl", {"hash": hash})
-
-    def get_image_url(self, hash):
-        """
-        获取上传图片的url地址(新版)
-        :param hash:图片hash值
-        """
-        return self.__client.call("eleme.file.getImageUrl", {"hash": hash})
-
     def get_shop_categories(self, shop_id):
         """
         查询店铺商品分类
@@ -355,4 +327,58 @@ class ProductService:
         :param shopId:店铺ID
         """
         return self.__client.call("eleme.product.item.getMaterialTree", {"shopId": shop_id})
+
+    def set_related_item_ids(self, shop_id, item_id, related_item_ids):
+        """
+        针对主菜itemId设置菜品推荐
+        :param shopId:店铺ID
+        :param itemId:商品ID
+        :param relatedItemIds:关联的商品ID
+        """
+        return self.__client.call("eleme.product.item.setRelatedItemIds", {"shopId": shop_id, "itemId": item_id, "relatedItemIds": related_item_ids})
+
+    def display_related_item_ids(self, shop_id, item_id, display):
+        """
+        对主菜itemId设置是否开启菜品推荐
+        :param shopId:店铺ID
+        :param itemId:商品ID
+        :param display:是否展示
+        """
+        return self.__client.call("eleme.product.item.displayRelatedItemIds", {"shopId": shop_id, "itemId": item_id, "display": display})
+
+    def get_related_item_ids(self, shop_id, item_id):
+        """
+        针对主菜itemId查询菜品推荐
+        :param shopId:店铺ID
+        :param itemId:商品ID
+        """
+        return self.__client.call("eleme.product.item.getRelatedItemIds", {"shopId": shop_id, "itemId": item_id})
+
+    def upload_image(self, image):
+        """
+        上传图片，返回图片的hash值
+        :param image:文件内容base64编码值
+        """
+        return self.__client.call("eleme.file.uploadImage", {"image": image})
+
+    def upload_image_with_remote_url(self, url):
+        """
+        通过远程URL上传图片，返回图片的hash值
+        :param url:远程Url地址
+        """
+        return self.__client.call("eleme.file.uploadImageWithRemoteUrl", {"url": url})
+
+    def get_uploaded_url(self, hash):
+        """
+        获取上传文件的访问URL，返回文件的Url地址
+        :param hash:图片hash值
+        """
+        return self.__client.call("eleme.file.getUploadedUrl", {"hash": hash})
+
+    def get_image_url(self, hash):
+        """
+        获取上传图片的url地址(新版)
+        :param hash:图片hash值
+        """
+        return self.__client.call("eleme.file.getImageUrl", {"hash": hash})
 

@@ -91,7 +91,7 @@ class OrderService:
 
     def start_delivery_by_self(self, order_id, phone):
         """
-        (自配送)订单确认送出
+        订单确认送出(自配送)
         :param orderId:订单ID
         :param phone:配送者电话
         """
@@ -99,7 +99,7 @@ class OrderService:
 
     def complete_delivery_by_self(self, order_id, phone):
         """
-        (自配送)订单确认送达
+        订单确认送达(自配送)
         :param orderId:订单ID
         :param phone:配送者电话
         """
@@ -289,4 +289,11 @@ class OrderService:
         :param orderIds:订单ID的列表
         """
         return self.__client.call("eleme.order.mgetUserSimpleInfoByOrderIds", {"orderIds": order_ids})
+
+    def get_delivery_routes(self, order_id):
+        """
+        获取订单配送轨迹
+        :param orderId:订单Id
+        """
+        return self.__client.call("eleme.order.delivery.getDeliveryRoutes", {"orderId": order_id})
 

@@ -80,3 +80,52 @@ class ShopService:
         """
         return self.__client.call("eleme.shop.getBusyLevelSetting", {"shopId": shop_id})
 
+    def submit_open_store_message_audit(self, open_store_message):
+        """
+        提交开店申请接口
+        :param openStoreMessage:开店申请表单
+        """
+        return self.__client.call("eleme.shop.setup.submitOpenStoreMessageAudit", {"openStoreMessage": open_store_message})
+
+    def submit_open_store_for_mermaid(self, open_store_message):
+        """
+        星巴克提交开店申请接口
+        :param openStoreMessage:开店申请表单
+        """
+        return self.__client.call("eleme.shop.setup.submitOpenStoreForMermaid", {"openStoreMessage": open_store_message})
+
+    def update_open_store_message_audit(self, update_store_message_body):
+        """
+        更新申请信息接口
+        :param updateStoreMessageBody:开店申请表单
+        """
+        return self.__client.call("eleme.shop.setup.updateOpenStoreMessageAudit", {"updateStoreMessageBody": update_store_message_body})
+
+    def query_process_status_by_submit_id(self, submit_id):
+        """
+        查询请求状态接口
+        :param submitId:请求提交id
+        """
+        return self.__client.call("eleme.shop.setup.queryProcessStatusBySubmitId", {"submitId": submit_id})
+
+    def upload_image(self, image_base_6_4):
+        """
+        图片上传处理接口（5M以内图片）
+        :param imageBase64:base64字节流
+        """
+        return self.__client.call("eleme.shop.setup.uploadImage", {"imageBase64": image_base_6_4})
+
+    def upload_min_image(self, image_base_6_4):
+        """
+        图片上传处理接口（500K以内图片）
+        :param imageBase64:base64字节流
+        """
+        return self.__client.call("eleme.shop.setup.uploadMinImage", {"imageBase64": image_base_6_4})
+
+    def upload_image_with_remote_url(self, url):
+        """
+        远程上传图片接口
+        :param url:图片url
+        """
+        return self.__client.call("eleme.shop.setup.uploadImageWithRemoteUrl", {"url": url})
+

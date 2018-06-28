@@ -175,6 +175,13 @@
 
 
 ## CHANGELOG:
+### [1.18.3]
+Release Date : 2018-6-28
+- [Feature] 内容服务新增接口
+- [Feature] 商品服务新增接口
+- [Feature] 订单服务新增接口
+- [Feature] 店铺装修服务新增接口
+- [Feature] 店铺服务新增接口
 
 ### [1.17.3]
 Release Date : 2018-6-22
