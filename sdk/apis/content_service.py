@@ -1,6 +1,8 @@
 # -*- coding: utf-8 -*-
 import os
-from sdk.efs_client import efsClient
+import time
+import calendar
+from ..efs_client import efsClient
 
 # 视频服务
 class ContentService:
@@ -29,6 +31,24 @@ class ContentService:
         :param videoType:视频类型
         """
         return self.__client.call("eleme.content.getEfsConfig", {"videoType": video_type})
+
+    def set_video_bind_relation(self, video_id, biz_id, bind_biz_type):
+        """
+        建立视频与相对应的业务的关联关系
+        :param videoId:视频Id
+        :param bizId:业务Id
+        :param bindBizType:业务类型
+        """
+        return self.__client.call("eleme.content.setVideoBindRelation", {"videoId": video_id, "bizId": biz_id, "bindBizType": bind_biz_type})
+
+    def unset_video_bind_relation(self, video_id, biz_id, bind_biz_type):
+        """
+        取消视频与对应业务的关联关系
+        :param videoId:视频Id
+        :param bizId:业务Id
+        :param bindBizType:业务类型
+        """
+        return self.__client.call("eleme.content.unsetVideoBindRelation", {"videoId": video_id, "bizId": biz_id, "bindBizType": bind_biz_type})
 
     def get_video_info(self, video_id):
         """
@@ -64,7 +84,7 @@ class ContentService:
 
         client = efs_client.init()
 
-        efs_key = str(shop_id) + '_' + str(efs_config['credentials']['expiration'])
+        efs_key = str(shop_id) + '_' + str(calendar.timegm(time.gmtime()))
 
         version_id = efs_client.put_object(efs_key, efs_config['bucketName'], video_file)
 

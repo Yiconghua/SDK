@@ -129,6 +129,55 @@ class ProductService:
         """
         return self.__client.call("eleme.product.category.setCategoryType", {"shopId": shop_id, "categoryId": category_id, "categoryType": category_type})
 
+    def set_day_parting_stick_time(self, shop_id, category_id, day_parting_stick):
+        """
+        设置分组分时段置顶
+        :param shopId:店铺Id
+        :param categoryId:商品分类Id
+        :param dayPartingStick:置顶时间设置
+        """
+        return self.__client.call("eleme.product.category.setDayPartingStickTime", {"shopId": shop_id, "categoryId": category_id, "dayPartingStick": day_parting_stick})
+
+    def remove_day_parting_stick_time(self, shop_id, category_id):
+        """
+        删除分组的分时置顶功能
+        :param shopId:店铺Id
+        :param categoryId:商品分类Id
+        """
+        return self.__client.call("eleme.product.category.removeDayPartingStickTime", {"shopId": shop_id, "categoryId": category_id})
+
+    def create_package(self, category_id, o_package):
+        """
+        添加套餐
+        :param categoryId:分类Id
+        :param oPackage:套餐属性
+        """
+        return self.__client.call("eleme.product.package.createPackage", {"categoryId": category_id, "oPackage": o_package})
+
+    def update_package_content(self, item_id, category_id, update):
+        """
+        修改套餐基本信息
+        :param itemId:新套餐id即OItem中的商品Id
+        :param categoryId:分类Id即OCategory中的分类Id
+        :param update:套餐基本信息
+        """
+        return self.__client.call("eleme.product.package.updatePackageContent", {"itemId": item_id, "categoryId": category_id, "update": update})
+
+    def update_package_relation(self, item_id, packages):
+        """
+        修改套餐和主料的关联关系
+        :param itemId:新套餐id即OItem中的商品Id
+        :param packages:套餐关系
+        """
+        return self.__client.call("eleme.product.package.updatePackageRelation", {"itemId": item_id, "packages": packages})
+
+    def remove_package(self, item_id):
+        """
+        删除套餐
+        :param itemId:套餐Id
+        """
+        return self.__client.call("eleme.product.package.removePackage", {"itemId": item_id})
+
     def get_items_by_category_id(self, category_id):
         """
         获取一个分类下的所有商品
@@ -327,6 +376,23 @@ class ProductService:
         :param shopId:店铺ID
         """
         return self.__client.call("eleme.product.item.getMaterialTree", {"shopId": shop_id})
+
+    def set_ingredient(self, shop_id, main_item_id, ingredient_group):
+        """
+        主料关联配料
+        :param shopId:店铺ID
+        :param mainItemId:主料ID（商品ID）
+        :param ingredientGroup: 商品配料分组
+        """
+        return self.__client.call("eleme.product.item.setIngredient", {"shopId": shop_id, "mainItemId": main_item_id, "ingredientGroup": ingredient_group})
+
+    def remove_ingredient(self, shop_id, main_item_id):
+        """
+        删除配料
+        :param shopId:店铺ID
+        :param mainItemId:主料ID（商品ID）
+        """
+        return self.__client.call("eleme.product.item.removeIngredient", {"shopId": shop_id, "mainItemId": main_item_id})
 
     def set_related_item_ids(self, shop_id, item_id, related_item_ids):
         """
