@@ -193,3 +193,44 @@ class UgcService:
         """
         return self.__client.call("eleme.ugc.getRecommendCouponByShopId", {"shopId": shop_id})
 
+    def get_o_rate_result(self, rate_query):
+        """
+        查询评价信息
+        :param rateQuery:评价查询参数
+        """
+        return self.__client.call("eleme.ugc.getORateResult", {"rateQuery": rate_query})
+
+    def count_o_rate_result(self, rate_query):
+        """
+        统计评价信息数量
+        :param rateQuery:评价查询参数
+        """
+        return self.__client.call("eleme.ugc.countORateResult", {"rateQuery": rate_query})
+
+    def reply_baidu_rate(self, rate_ids, shop_id, reply):
+        """
+        通过rateIds和shopId 回复百度外卖评论
+        :param rateIds: 评论编号(订单维度)
+        :param shopId: 饿了么侧餐厅id
+        :param reply:回复的内容
+        """
+        return self.__client.call("eleme.ugc.replyBaiduRate", {"rateIds": rate_ids, "shopId": shop_id, "reply": reply})
+
+    def send_baidu_coupon(self, rate_id, shop_id, coupon):
+        """
+        根据rateId和shopId 赠送代金券给该百度评价对应订单的评价用户
+        :param rateId: 评论编号(订单维度)
+        :param shopId: 餐厅id
+        :param coupon:需要赠送的代金券信息
+        """
+        return self.__client.call("eleme.ugc.sendBaiduCoupon", {"rateId": rate_id, "shopId": shop_id, "coupon": coupon})
+
+    def get_rate_coupon_status(self, rate_id, shop_id, rate_data_type):
+        """
+        根据rateId和shopId获取该订单评价用户的可赠券状态
+        :param rateId: 评论编号(订单维度)
+        :param shopId: 餐厅id
+        :param rateDataType:评价数据类型
+        """
+        return self.__client.call("eleme.ugc.getRateCouponStatus", {"rateId": rate_id, "shopId": shop_id, "rateDataType": rate_data_type})
+

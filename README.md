@@ -175,6 +175,10 @@
 
 
 ## CHANGELOG:
+### [1.18.5]
+Release Date : 2018-7-13
+- [Feature] 订单评论服务新增接口
+
 ### [1.18.4]
 Release Date : 2018-7-6
 - [Feature] 内容服务新增接口
