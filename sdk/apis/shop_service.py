@@ -80,6 +80,14 @@ class ShopService:
         """
         return self.__client.call("eleme.shop.getBusyLevelSetting", {"shopId": shop_id})
 
+    def set_brand_rank_weight(self, shop_id, weight):
+        """
+        设置品牌排序权重
+        :param shopId:店铺Id
+        :param weight:权重值(取值范围[0~10])
+        """
+        return self.__client.call("eleme.shop.setBrandRankWeight", {"shopId": shop_id, "weight": weight})
+
     def submit_open_store_message_audit(self, open_store_message):
         """
         提交开店申请接口

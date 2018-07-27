@@ -290,6 +290,22 @@ class OrderService:
         """
         return self.__client.call("eleme.order.mgetUserSimpleInfoByOrderIds", {"orderIds": order_ids})
 
+    def refund_part(self, order_id, refund_order_message):
+        """
+        商家部分退款
+        :param orderId:订单id
+        :param refundOrderMessage:退款详情
+        """
+        return self.__client.call("eleme.order.refundPart", {"orderId": order_id, "refundOrderMessage": refund_order_message})
+
+    def set_invoice_url(self, order_id, invoice_url):
+        """
+        设置订单开票地址
+        :param orderId:订单id
+        :param invoiceUrl:开票地址
+        """
+        return self.__client.call("eleme.order.setInvoiceUrl", {"orderId": order_id, "invoiceUrl": invoice_url})
+
     def get_delivery_routes(self, order_id):
         """
         获取订单配送轨迹
