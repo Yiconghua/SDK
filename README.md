@@ -175,6 +175,12 @@
 
 
 ## CHANGELOG:
+### [1.20.5]
+Release Date : 2018-8-3
+- [Feature] 商品服务更新接口
+- [Feature] 新增商户会员卡服务
+- [Feature] 新增CPC竞价服务
+
 ### [1.19.5]
 Release Date : 2018-7-27
 - [Feature] 订单服务新增接口

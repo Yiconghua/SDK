@@ -84,7 +84,7 @@ class OrderService:
 
     def received_order_lite(self, order_id):
         """
-        订单确认送达(推荐)
+        订单确认送达
         :param orderId:订单ID
         """
         return self.__client.call("eleme.order.receivedOrderLite", {"orderId": order_id})
