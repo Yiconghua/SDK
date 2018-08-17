@@ -47,7 +47,7 @@ class CardService:
 
     def apply_template(self, template_id, shop_ids):
         """
-        将会员模板应用于店铺
+        应用模板
         :param templateId:模板id
         :param shopIds:店铺列表
         """

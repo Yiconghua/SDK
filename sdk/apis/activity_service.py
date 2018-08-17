@@ -221,3 +221,30 @@ class ActivityService:
         """
         return self.__client.call("eleme.activity.coupon.queryTargetCouponInfo", {"targetCouponQueryRequest": target_coupon_query_request})
 
+    def present_common_target_sku_coupons(self, chain_id, target_list, target_list_type, common_target_sku_coupon_detail):
+        """
+        定向赠通用商品券
+        :param chainId:连锁店id
+        :param targetList:目标列表
+        :param targetListType:目标类型
+        :param commonTargetSkuCouponDetail:通用定向赠连锁商品券模板细节
+        """
+        return self.__client.call("eleme.activity.coupon.presentCommonTargetSkuCoupons", {"chainId": chain_id, "targetList": target_list, "targetListType": target_list_type, "commonTargetSkuCouponDetail": common_target_sku_coupon_detail})
+
+    def present_sku_coupons(self, target_list, target_list_type, sku_coupon_detail):
+        """
+        定向赠指定商品券
+        :param targetList:目标列表
+        :param targetListType:目标类型
+        :param skuCouponDetail:商品券模板细节
+        """
+        return self.__client.call("eleme.activity.coupon.presentSkuCoupons", {"targetList": target_list, "targetListType": target_list_type, "skuCouponDetail": sku_coupon_detail})
+
+    def update_coupon_status(self, criteria, type):
+        """
+        券状态变更
+        :param criteria:券状态修改对象
+        :param type:操作类型
+        """
+        return self.__client.call("eleme.activity.coupon.updateCouponStatus", {"criteria": criteria, "type": type})
+
