@@ -88,6 +88,13 @@ class ShopService:
         """
         return self.__client.call("eleme.shop.setBrandRankWeight", {"shopId": shop_id, "weight": weight})
 
+    def get_product_subsidy_limit(self, shop_id):
+        """
+        获取店铺可补贴配送费的标品及补贴上限
+        :param shopId:店铺 id 
+        """
+        return self.__client.call("eleme.shop.getProductSubsidyLimit", {"shopId": shop_id})
+
     def submit_open_store_message_audit(self, open_store_message):
         """
         提交开店申请接口

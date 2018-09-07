@@ -4,7 +4,7 @@ from setuptools import setup, find_packages
 
 setup(
     name='eleme.openapi.python.sdk',
-    version='1.20.6',
+    version='1.21.6',
     keywords=('eleme', 'openapi'),
     #long_description=open('README.md').read(),
     description='eleme openapi python sdk',

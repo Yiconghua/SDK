@@ -175,6 +175,12 @@
 
 
 ## CHANGELOG:
+### [1.21.6]
+Release Date : 2018-9-7
+- [Feature] 活动服务新增接口
+- [Feature] 店铺服务新增接口
+- [Feature] 商品服务新增接口
+
 ### [1.20.6]
 Release Date : 2018-8-17
 - [Feature] 活动服务新增接口

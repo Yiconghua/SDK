@@ -304,6 +304,21 @@ class ProductService:
         """
         return self.__client.call("eleme.product.item.updateMultiSpecItem", {"itemId": item_id, "categoryId": category_id, "properties": properties})
 
+    def set_ingredient_group(self, item_id, group_relations):
+        """
+        设置配料组数据
+        :param itemId:商品Id
+        :param groupRelations:配料组信息
+        """
+        return self.__client.call("eleme.product.item.setIngredientGroup", {"itemId": item_id, "groupRelations": group_relations})
+
+    def remove_ingredient_group(self, item_id):
+        """
+        删除配料组数据
+        :param itemId:商品Id
+        """
+        return self.__client.call("eleme.product.item.removeIngredientGroup", {"itemId": item_id})
+
     def get_shop_categories(self, shop_id):
         """
         查询店铺商品分类

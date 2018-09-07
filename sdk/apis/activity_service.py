@@ -61,6 +61,23 @@ class ActivityService:
         """
         return self.__client.call("eleme.activity.flash.invalidShopActivity", {"activityId": activity_id, "shopId": shop_id})
 
+    def create_shipping_fee_activity(self, create_info, shop_id):
+        """
+        创建减配送费活动
+        :param createInfo:创建减配送费活动的结构体
+        :param shopId:店铺Id
+        """
+        return self.__client.call("eleme.activity.shippingFee.createShippingFeeActivity", {"createInfo": create_info, "shopId": shop_id})
+
+    def invalid_shipping_fee_activity(self, activity_id, shop_id, comment):
+        """
+        作废减配送费活动
+        :param activityId:活动Id
+        :param shopId:店铺Id
+        :param comment:作废原因
+        """
+        return self.__client.call("eleme.activity.shippingFee.invalidShippingFeeActivity", {"activityId": activity_id, "shopId": shop_id, "comment": comment})
+
     def query_invited_food_activities(self, shop_id):
         """
         通过店铺Id查询该店铺被邀约的美食活动
