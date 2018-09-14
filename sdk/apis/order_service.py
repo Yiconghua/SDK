@@ -306,6 +306,23 @@ class OrderService:
         """
         return self.__client.call("eleme.order.setInvoiceUrl", {"orderId": order_id, "invoiceUrl": invoice_url})
 
+    def self_delivery_state_sync(self, shop_id, state_info):
+        """
+        自配送商家同步运单的状态信息
+        :param shopId:店铺id
+        :param stateInfo:运单状态信息
+        """
+        return self.__client.call("eleme.order.selfDeliveryStateSync", {"shopId": shop_id, "stateInfo": state_info})
+
+    def self_delivery_location_sync(self, shop_id, order_id, location_info):
+        """
+        自配送商家同步运单的位置信息
+        :param shopId:店铺id
+        :param orderId:订单id
+        :param locationInfo:位置信息,仅接受火星坐标系
+        """
+        return self.__client.call("eleme.order.selfDeliveryLocationSync", {"shopId": shop_id, "orderId": order_id, "locationInfo": location_info})
+
     def get_delivery_routes(self, order_id):
         """
         获取订单配送轨迹
