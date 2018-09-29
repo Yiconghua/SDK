@@ -67,7 +67,7 @@ class ShopService:
     def update_busy_level_setting(self, shop_id, week_setting, date_setting):
         """
         更新店铺营业时间预设置
-        :param shopId:店铺 id 
+        :param shopId:店铺id
         :param weekSetting:一周营业时间预设置, 参考 OShopBusyLevelSetting weekSetting 字段定义 
         :param dateSetting:特定日期营业时间预设置, 参考 OShopBusyLevelSetting dateSetting 字段定义 
         """
@@ -76,7 +76,7 @@ class ShopService:
     def get_busy_level_setting(self, shop_id):
         """
         获取店铺营业时间预设置
-        :param shopId:店铺 id 
+        :param shopId:店铺id
         """
         return self.__client.call("eleme.shop.getBusyLevelSetting", {"shopId": shop_id})
 

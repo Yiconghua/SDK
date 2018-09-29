@@ -175,6 +175,11 @@
 
 
 ## CHANGELOG:
+### [1.23.7]
+Release Date : 2018-9-29
+- [Feature] 新增商户数据服务
+- [Feature] 店铺服务更新接口
+
 ### [1.22.7]
 Release Date : 2018-9-21
 - [Feature] 商户会员卡服务更新接口
