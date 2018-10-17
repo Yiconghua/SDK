@@ -209,7 +209,7 @@ class UgcService:
 
     def reply_baidu_rate(self, rate_ids, shop_id, reply):
         """
-        通过rateIds和shopId 回复百度外卖评论
+        通过rateIds和shopId 回复饿了么星选评论
         :param rateIds: 评论编号(订单维度)
         :param shopId: 饿了么侧餐厅id
         :param reply:回复的内容
@@ -218,7 +218,7 @@ class UgcService:
 
     def send_baidu_coupon(self, rate_id, shop_id, coupon):
         """
-        根据rateId和shopId 赠送代金券给该百度评价对应订单的评价用户
+        根据rateId和shopId 赠送代金券给该饿了么星选评价对应订单的评价用户
         :param rateId: 评论编号(订单维度)
         :param shopId: 餐厅id
         :param coupon:需要赠送的代金券信息

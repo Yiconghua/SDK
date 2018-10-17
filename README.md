@@ -175,6 +175,12 @@
 
 
 ## CHANGELOG:
+### [1.23.8]
+Release Date : 2018-10-17
+- [Feature] 活动服务新增接口
+- [Feature] 订单评论服务更新接口
+- [Feature] 订单服务新增更新接口
+
 ### [1.23.7]
 Release Date : 2018-9-29
 - [Feature] 新增商户数据服务

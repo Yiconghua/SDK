@@ -9,6 +9,13 @@ class OrderService:
     def __init__(self, client):
         self.__client = client
 
+    def get_delivery_routes(self, order_id):
+        """
+        获取订单配送轨迹
+        :param orderId:订单Id
+        """
+        return self.__client.call("eleme.order.delivery.getDeliveryRoutes", {"orderId": order_id})
+
     def get_order(self, order_id):
         """
         获取订单
@@ -85,14 +92,14 @@ class OrderService:
     def received_order_lite(self, order_id):
         """
         订单确认送达
-        :param orderId:订单ID
+        :param orderId:订单Id
         """
         return self.__client.call("eleme.order.receivedOrderLite", {"orderId": order_id})
 
     def start_delivery_by_self(self, order_id, phone):
         """
         订单确认送出(自配送)
-        :param orderId:订单ID
+        :param orderId:订单Id
         :param phone:配送者电话
         """
         return self.__client.call("eleme.order.startDeliveryBySelf", {"orderId": order_id, "phone": phone})
@@ -100,7 +107,7 @@ class OrderService:
     def complete_delivery_by_self(self, order_id, phone):
         """
         订单确认送达(自配送)
-        :param orderId:订单ID
+        :param orderId:订单Id
         :param phone:配送者电话
         """
         return self.__client.call("eleme.order.completeDeliveryBySelf", {"orderId": order_id, "phone": phone})
@@ -160,35 +167,35 @@ class OrderService:
     def get_unreply_reminders(self, shop_id):
         """
         获取店铺未回复的催单
-        :param shopId:店铺id
+        :param shopId:店铺Id
         """
         return self.__client.call("eleme.order.getUnreplyReminders", {"shopId": shop_id})
 
     def get_unprocess_orders(self, shop_id):
         """
         查询店铺未处理订单
-        :param shopId:店铺id
+        :param shopId:店铺Id
         """
         return self.__client.call("eleme.order.getUnprocessOrders", {"shopId": shop_id})
 
     def get_cancel_orders(self, shop_id):
         """
         查询店铺未处理的取消单
-        :param shopId:店铺id
+        :param shopId:店铺Id
         """
         return self.__client.call("eleme.order.getCancelOrders", {"shopId": shop_id})
 
     def get_refund_orders(self, shop_id):
         """
         查询店铺未处理的退单
-        :param shopId:店铺id
+        :param shopId:店铺Id
         """
         return self.__client.call("eleme.order.getRefundOrders", {"shopId": shop_id})
 
     def get_all_orders(self, shop_id, page_no, page_size, date):
         """
         查询全部订单
-        :param shopId:店铺id
+        :param shopId:店铺Id
         :param pageNo:页码。取值范围:大于零的整数最大限制为100
         :param pageSize:每页获取条数。最小值1，最大值50。
         :param date:日期,默认当天,格式:yyyy-MM-dd
@@ -286,14 +293,14 @@ class OrderService:
     def mget_user_simple_info_by_order_ids(self, order_ids):
         """
         查询顾客联系方式
-        :param orderIds:订单ID的列表
+        :param orderIds:订单Id的列表
         """
         return self.__client.call("eleme.order.mgetUserSimpleInfoByOrderIds", {"orderIds": order_ids})
 
     def refund_part(self, order_id, refund_order_message):
         """
         商家部分退款
-        :param orderId:订单id
+        :param orderId:订单Id
         :param refundOrderMessage:退款详情
         """
         return self.__client.call("eleme.order.refundPart", {"orderId": order_id, "refundOrderMessage": refund_order_message})
@@ -301,7 +308,7 @@ class OrderService:
     def set_invoice_url(self, order_id, invoice_url):
         """
         设置订单开票地址
-        :param orderId:订单id
+        :param orderId:订单Id
         :param invoiceUrl:开票地址
         """
         return self.__client.call("eleme.order.setInvoiceUrl", {"orderId": order_id, "invoiceUrl": invoice_url})
@@ -309,7 +316,7 @@ class OrderService:
     def self_delivery_state_sync(self, shop_id, state_info):
         """
         自配送商家同步运单的状态信息
-        :param shopId:店铺id
+        :param shopId:店铺Id
         :param stateInfo:运单状态信息
         """
         return self.__client.call("eleme.order.selfDeliveryStateSync", {"shopId": shop_id, "stateInfo": state_info})
@@ -317,16 +324,33 @@ class OrderService:
     def self_delivery_location_sync(self, shop_id, order_id, location_info):
         """
         自配送商家同步运单的位置信息
-        :param shopId:店铺id
-        :param orderId:订单id
+        :param shopId:店铺Id
+        :param orderId:订单Id
         :param locationInfo:位置信息,仅接受火星坐标系
         """
         return self.__client.call("eleme.order.selfDeliveryLocationSync", {"shopId": shop_id, "orderId": order_id, "locationInfo": location_info})
 
-    def get_delivery_routes(self, order_id):
+    def order_predict_finish_time(self, order_id, predict_time):
         """
-        获取订单配送轨迹
+        订单预计出餐时间
         :param orderId:订单Id
+        :param predictTime:预计订单出餐时间
         """
-        return self.__client.call("eleme.order.delivery.getDeliveryRoutes", {"orderId": order_id})
+        return self.__client.call("eleme.order.orderPredictFinishTime", {"orderId": order_id, "predictTime": predict_time})
+
+    def commodity_predict_finish_time(self, shop_id, commodity_info):
+        """
+        菜品预计出餐时间
+        :param shopId:店铺Id
+        :param commodityInfo:菜品信息
+        """
+        return self.__client.call("eleme.order.commodityPredictFinishTime", {"shopId": shop_id, "commodityInfo": commodity_info})
+
+    def commodity_actual_finish_time(self, shop_id, commodity_info):
+        """
+        菜品实际出餐时间
+        :param shopId:店铺Id
+        :param commodityInfo:菜品信息
+        """
+        return self.__client.call("eleme.order.commodityActualFinishTime", {"shopId": shop_id, "commodityInfo": commodity_info})
 

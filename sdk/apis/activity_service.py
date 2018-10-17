@@ -265,3 +265,22 @@ class ActivityService:
         """
         return self.__client.call("eleme.activity.coupon.updateCouponStatus", {"criteria": criteria, "type": type})
 
+    def create_and_participate_chain_price_activity(self, activity, chain_id, shop_apply_info):
+        """
+        创建并绑定连锁店特价活动
+        :param activity:活动创建信息
+        :param chainId:连锁店Id
+        :param shopApplyInfo: 绑定的商品信息
+        """
+        return self.__client.call("eleme.activity.skuchain.createAndParticipateChainPriceActivity", {"activity": activity, "chainId": chain_id, "shopApplyInfo": shop_apply_info})
+
+    def in_valid_sku_activity_by_id(self, activity_id, shop_id, spec_id, comment):
+        """
+        根据活动Id和店铺Id和商品规格Id，作废参与关系
+        :param activityId:活动Id
+        :param shopId:店铺Id
+        :param specId:商品规格Id
+        :param comment:作废原因
+        """
+        return self.__client.call("eleme.activity.skuchain.inValidSkuActivityById", {"activityId": activity_id, "shopId": shop_id, "specId": spec_id, "comment": comment})
+
