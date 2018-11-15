@@ -91,9 +91,25 @@ class ShopService:
     def get_product_subsidy_limit(self, shop_id):
         """
         获取店铺可补贴配送费的标品及补贴上限
-        :param shopId:店铺 id 
+        :param shopId:店铺Id
         """
         return self.__client.call("eleme.shop.getProductSubsidyLimit", {"shopId": shop_id})
+
+    def set_shop_vocations(self, shop_id, vocation_dates, enabled):
+        """
+        设置店铺假期歇业
+        :param shopId:店铺Id
+        :param vocationDates: 店铺休假日期
+        :param enabled: 店铺休假是否有效
+        """
+        return self.__client.call("eleme.shop.setShopVocations", {"shopId": shop_id, "vocationDates": vocation_dates, "enabled": enabled})
+
+    def get_shop_vocation(self, shop_id):
+        """
+        获取店铺有效的假期歇业日期
+        :param shopId:店铺Id
+        """
+        return self.__client.call("eleme.shop.getShopVocation", {"shopId": shop_id})
 
     def submit_open_store_message_audit(self, open_store_message):
         """

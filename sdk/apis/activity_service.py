@@ -248,6 +248,16 @@ class ActivityService:
         """
         return self.__client.call("eleme.activity.coupon.presentCommonTargetSkuCoupons", {"chainId": chain_id, "targetList": target_list, "targetListType": target_list_type, "commonTargetSkuCouponDetail": common_target_sku_coupon_detail})
 
+    def present_chain_sku_coupons(self, chain_id, target_list, target_list_type, chain_sku_coupon_detail):
+        """
+        定向赠连锁通用商品券
+        :param chainId:连锁店id
+        :param targetList:目标列表
+        :param targetListType:目标类型
+        :param chainSkuCouponDetail:通用定向赠连锁商品券模板细节
+        """
+        return self.__client.call("eleme.activity.coupon.presentChainSkuCoupons", {"chainId": chain_id, "targetList": target_list, "targetListType": target_list_type, "chainSkuCouponDetail": chain_sku_coupon_detail})
+
     def present_sku_coupons(self, target_list, target_list_type, sku_coupon_detail):
         """
         定向赠指定商品券
