@@ -44,7 +44,7 @@ class RpcClient:
         eleme_request_id = request_id + '|' + str(timestamp)
         protocol = {
             "nop": "1.0.0",
-            "id": request_id,
+            "id": eleme_request_id,
             "action": action,
             "token": json.loads(self.token)['access_token'],
             "metas": {

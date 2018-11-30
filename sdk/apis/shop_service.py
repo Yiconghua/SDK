@@ -95,6 +95,14 @@ class ShopService:
         """
         return self.__client.call("eleme.shop.getProductSubsidyLimit", {"shopId": shop_id})
 
+    def set_shop_t_model(self, shop_id, delivery_time):
+        """
+        设置店铺T模型
+        :param shopId:店铺Id
+        :param deliveryTime:配送总时间(单位:分钟)
+        """
+        return self.__client.call("eleme.shop.setShopTModel", {"shopId": shop_id, "deliveryTime": delivery_time})
+
     def set_shop_vocations(self, shop_id, vocation_dates, enabled):
         """
         设置店铺假期歇业

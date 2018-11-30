@@ -175,6 +175,11 @@
 
 
 ## CHANGELOG:
+### [1.24.1]
+Release Date : 2018-11-30
+- [Feature] 店铺服务新增接口
+- [Feature] requestId新增时间戳后缀
+
 ### [1.24.0]
 Release Date : 2018-11-15
 - [Feature] 活动服务新增接口
