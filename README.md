@@ -175,6 +175,10 @@
 
 
 ## CHANGELOG:
+### [1.24.2]
+Release Date : 2018-12-7
+- [Feature] 订单服务更新接口
+
 ### [1.24.1]
 Release Date : 2018-11-30
 - [Feature] 店铺服务新增接口

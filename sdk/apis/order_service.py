@@ -354,3 +354,10 @@ class OrderService:
         """
         return self.__client.call("eleme.order.commodityActualFinishTime", {"shopId": shop_id, "commodityInfo": commodity_info})
 
+    def query_call_available(self, order_id):
+        """
+        匿名订单查询可用虚拟小号
+        :param orderId:订单Id
+        """
+        return self.__client.call("eleme.order.queryCallAvailable", {"orderId": order_id})
+
