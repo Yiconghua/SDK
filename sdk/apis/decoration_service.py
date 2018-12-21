@@ -107,47 +107,6 @@ class DecorationService:
         """
         return self.__client.call("eleme.decoration.accurateCategory.queryAccurateCategoryList", {"category": category})
 
-    def create_window(self, window):
-        """
-        创建多橱窗
-        :param window:新增的橱窗信息和其关联门店ID和关联商品
-        """
-        return self.__client.call("eleme.decoration.windows.createWindow", {"window": window})
-
-    def update_window(self, window):
-        """
-        修改橱窗
-        :param window:修改的橱窗信息和其关联门店ID和门店商品
-        """
-        return self.__client.call("eleme.decoration.windows.updateWindow", {"window": window})
-
-    def delete_window(self, window):
-        """
-        删除橱窗
-        :param window:删除橱窗信息
-        """
-        return self.__client.call("eleme.decoration.windows.deleteWindow", {"window": window})
-
-    def order_window(self, window):
-        """
-        对多个橱窗进行排序
-        :param window:橱窗排序信息
-        """
-        return self.__client.call("eleme.decoration.windows.orderWindow", {"window": window})
-
-    def get_window_by_id(self, burst_window_id):
-        """
-        根据橱窗ID获取橱窗详情
-        :param burstWindowId:橱窗ID
-        """
-        return self.__client.call("eleme.decoration.windows.getWindowById", {"burstWindowId": burst_window_id})
-
-    def get_windows(self):
-        """
-        获取可见的橱窗信息集合
-        """
-        return self.__client.call("eleme.decoration.windows.getWindows", {})
-
     def create_poster(self, poster):
         """
         创建海报

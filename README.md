@@ -175,6 +175,11 @@
 
 
 ## CHANGELOG:
+### [1.24.3]
+Release Date : 2018-12-21
+- [Feature] 订单评价服务新增更新接口
+- [Feature] 门店装修服务下线接口
+
 ### [1.24.2]
 Release Date : 2018-12-7
 - [Feature] 订单服务更新接口

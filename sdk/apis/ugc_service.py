@@ -146,7 +146,7 @@ class UgcService:
 
     def reply_rate_by_rate_id_and_shop_id(self, rate_id, shop_id, reply_type, reply):
         """
-        通过rateId和shopId 回复指定类型的评论
+        通过rateId和shopId 回复指定类型的评论(推荐)
         :param rateId:评论编号
         :param shopId: 餐厅id
         :param replyType:评论类型
@@ -156,7 +156,7 @@ class UgcService:
 
     def reply_rate_by_rate_ids_and_shop_id(self, rate_ids, shop_id, reply_type, reply):
         """
-        通过rateIds和shopId 批量回复指定类型的评论
+        通过rateIds和shopId 批量回复指定类型的评论(推荐)
         :param rateIds: 评论编号
         :param shopId: 餐厅id
         :param replyType:评论类型
@@ -195,7 +195,7 @@ class UgcService:
 
     def get_o_rate_result(self, rate_query):
         """
-        查询评价信息
+        查询评价信息(推荐)
         :param rateQuery:评价查询参数
         """
         return self.__client.call("eleme.ugc.getORateResult", {"rateQuery": rate_query})
@@ -227,10 +227,24 @@ class UgcService:
 
     def get_rate_coupon_status(self, rate_id, shop_id, rate_data_type):
         """
-        根据rateId和shopId获取该订单评价用户的可赠券状态
+        根据rateId和shopId获取该订单评价用户的可赠券状态(推荐)
         :param rateId: 评论编号(订单维度)
         :param shopId: 餐厅id
         :param rateDataType:评价数据类型
         """
         return self.__client.call("eleme.ugc.getRateCouponStatus", {"rateId": rate_id, "shopId": shop_id, "rateDataType": rate_data_type})
+
+    def rating_coupon(self, rating_coupon_d_t_o):
+        """
+        根据评价编号赠送代金券给评价用户(推荐)
+        :param ratingCouponDTO:赠券所需的参数
+        """
+        return self.__client.call("eleme.ugc.ratingCoupon", {"ratingCouponDTO": rating_coupon_d_t_o})
+
+    def get_coupon_extends_info(self, extends_queries):
+        """
+        获取赠券扩展信息(推荐)
+        :param extendsQueries:评价赠券信息查询条件
+        """
+        return self.__client.call("eleme.ugc.getCouponExtendsInfo", {"extendsQueries": extends_queries})
 
