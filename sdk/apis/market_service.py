@@ -19,3 +19,17 @@ class MarketService:
         """
         return self.__client.call("eleme.market.syncMarketMessages", {"start": start, "end": end, "offset": offset, "limit": limit})
 
+    def create_order(self, request):
+        """
+        创建内购项目订单
+        :param request:创建订单请求信息
+        """
+        return self.__client.call("eleme.market.createOrder", {"request": request})
+
+    def query_order(self, order_no):
+        """
+        查询服务市场订单
+        :param orderNo:服务市场订单编号
+        """
+        return self.__client.call("eleme.market.queryOrder", {"orderNo": order_no})
+

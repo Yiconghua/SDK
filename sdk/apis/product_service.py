@@ -9,33 +9,293 @@ class ProductService:
     def __init__(self, client):
         self.__client = client
 
-    def upload_image(self, image):
+    def get_menu_with_group(self, mid):
         """
-        上传图片，返回图片的hash值
-        :param image:文件内容base64编码值
+        查询连锁总店菜单及分组信息
+        :param mid:菜单Id
         """
-        return self.__client.call("eleme.file.uploadImage", {"image": image})
+        return self.__client.call("eleme.product.chain.menu.getMenuWithGroup", {"mid": mid})
 
-    def upload_image_with_remote_url(self, url):
+    def query_menu_by_page(self, offset, limit):
         """
-        通过远程URL上传图片，返回图片的hash值
-        :param url:远程Url地址
+        分页查询连锁总店下的菜单列表
+        :param offset:分页起始
+        :param limit:一页个数
         """
-        return self.__client.call("eleme.file.uploadImageWithRemoteUrl", {"url": url})
+        return self.__client.call("eleme.product.chain.menu.queryMenuByPage", {"offset": offset, "limit": limit})
 
-    def get_uploaded_url(self, hash):
+    def create_menu(self, chain_menu_base_d_t_o):
         """
-        获取上传文件的访问URL，返回文件的Url地址
-        :param hash:图片hash值
+        添加连锁总店菜单
+        :param chainMenuBaseDTO:添加的菜单信息
         """
-        return self.__client.call("eleme.file.getUploadedUrl", {"hash": hash})
+        return self.__client.call("eleme.product.chain.menu.createMenu", {"chainMenuBaseDTO": chain_menu_base_d_t_o})
 
-    def get_image_url(self, hash):
+    def update_menu(self, mid, chain_menu_base_d_t_o):
         """
-        获取上传图片的url地址(新版)
-        :param hash:图片hash值
+        更新连锁总店菜单
+        :param mid:菜单Id
+        :param chainMenuBaseDTO:菜单更新信息
         """
-        return self.__client.call("eleme.file.getImageUrl", {"hash": hash})
+        return self.__client.call("eleme.product.chain.menu.updateMenu", {"mid": mid, "chainMenuBaseDTO": chain_menu_base_d_t_o})
+
+    def delete_menu(self, mid):
+        """
+        删除连锁总店菜单
+        :param mid:菜单Id
+        """
+        return self.__client.call("eleme.product.chain.menu.deleteMenu", {"mid": mid})
+
+    def get_group(self, gid):
+        """
+        查询连锁总店商品分组
+        :param gid:连锁总店商品分组Id
+        """
+        return self.__client.call("eleme.product.chain.group.getGroup", {"gid": gid})
+
+    def get_group_with_item(self, gid):
+        """
+        查询连锁总店商品分组及商品详情
+        :param gid:连锁总店商品分组Id
+        """
+        return self.__client.call("eleme.product.chain.group.getGroupWithItem", {"gid": gid})
+
+    def create_group(self, mid, chain_group_base_d_t_o):
+        """
+        添加连锁总店商品分组
+        :param mid:菜单Id
+        :param chainGroupBaseDTO:分组创建信息
+        """
+        return self.__client.call("eleme.product.chain.group.createGroup", {"mid": mid, "chainGroupBaseDTO": chain_group_base_d_t_o})
+
+    def batch_create_group(self, mid, chain_group_base_d_t_os):
+        """
+        批量添加连锁总店商品分组
+        :param mid:菜单Id
+        :param chainGroupBaseDTOs:分组创建信息列表
+        """
+        return self.__client.call("eleme.product.chain.group.batchCreateGroup", {"mid": mid, "chainGroupBaseDTOs": chain_group_base_d_t_os})
+
+    def update_group(self, gid, chain_group_base_d_t_o):
+        """
+        更新连锁总店商品分组
+        :param gid:连锁总店商品分组Id
+        :param chainGroupBaseDTO:分组更新信息
+        """
+        return self.__client.call("eleme.product.chain.group.updateGroup", {"gid": gid, "chainGroupBaseDTO": chain_group_base_d_t_o})
+
+    def delete_group(self, gid):
+        """
+        删除连锁总店商品分组
+        :param gid:连锁总店商品分组Id
+        """
+        return self.__client.call("eleme.product.chain.group.deleteGroup", {"gid": gid})
+
+    def get_relation_by_pid(self, p_id):
+        """
+        查询连锁总店商品规格关联的单店商品规格信息
+        :param pId:连锁总店商品规格Id
+        """
+        return self.__client.call("eleme.product.chain.pid.getRelationByPid", {"pId": p_id})
+
+    def set_pid(self, p_id, spec_id):
+        """
+        设置连锁总店商品规格与单店商品规格关系
+        :param pId:连锁总店商品规格Id
+        :param specId:子店商品规格Id
+        """
+        return self.__client.call("eleme.product.chain.pid.setPid", {"pId": p_id, "specId": spec_id})
+
+    def batch_set_pid(self, p_id, spec_ids):
+        """
+        批量设置连锁总店商品规格与单店商品规格关系
+        :param pId:连锁总店商品规格Id
+        :param specIds:子店商品规格Id列表
+        """
+        return self.__client.call("eleme.product.chain.pid.batchSetPid", {"pId": p_id, "specIds": spec_ids})
+
+    def delete_pid_by_spec_id(self, spec_id):
+        """
+        解除连锁总店商品规格与单店商品规格关系
+        :param specId:子店的商品规格Id
+        """
+        return self.__client.call("eleme.product.chain.pid.deletePidBySpecId", {"specId": spec_id})
+
+    def batch_delete_pid_by_spec_id(self, spec_ids):
+        """
+        批量解除连锁总店商品规格与单店商品规格关系
+        :param specIds:子店的商品规格Id列表
+        """
+        return self.__client.call("eleme.product.chain.pid.batchDeletePidBySpecId", {"specIds": spec_ids})
+
+    def get_shop_categories(self, shop_id):
+        """
+        查询店铺商品分类
+        :param shopId:店铺Id
+        """
+        return self.__client.call("eleme.product.category.getShopCategories", {"shopId": shop_id})
+
+    def get_shop_categories_with_children(self, shop_id):
+        """
+        查询店铺商品分类，包含二级分类
+        :param shopId:店铺Id
+        """
+        return self.__client.call("eleme.product.category.getShopCategoriesWithChildren", {"shopId": shop_id})
+
+    def get_category(self, category_id):
+        """
+        查询商品分类详情
+        :param categoryId:商品分类Id
+        """
+        return self.__client.call("eleme.product.category.getCategory", {"categoryId": category_id})
+
+    def get_category_with_children(self, category_id):
+        """
+        查询商品分类详情，包含二级分类
+        :param categoryId:商品分类Id
+        """
+        return self.__client.call("eleme.product.category.getCategoryWithChildren", {"categoryId": category_id})
+
+    def create_category(self, shop_id, name, description):
+        """
+        添加商品分类
+        :param shopId:店铺Id
+        :param name:商品分类名称，长度需在50字以内
+        :param description:商品分类描述，长度需在50字以内
+        """
+        return self.__client.call("eleme.product.category.createCategory", {"shopId": shop_id, "name": name, "description": description})
+
+    def create_category_with_children(self, shop_id, name, parent_id, description):
+        """
+        添加商品分类，支持二级分类
+        :param shopId:店铺Id
+        :param name:商品分类名称，长度需在50字以内
+        :param parentId:父分类ID，如果没有可以填0
+        :param description:商品分类描述，长度需在50字以内
+        """
+        return self.__client.call("eleme.product.category.createCategoryWithChildren", {"shopId": shop_id, "name": name, "parentId": parent_id, "description": description})
+
+    def update_category(self, category_id, name, description):
+        """
+        更新商品分类
+        :param categoryId:商品分类Id
+        :param name:商品分类名称，长度需在50字以内
+        :param description:商品分类描述，长度需在50字以内
+        """
+        return self.__client.call("eleme.product.category.updateCategory", {"categoryId": category_id, "name": name, "description": description})
+
+    def update_category_with_children(self, category_id, name, parent_id, description):
+        """
+        更新商品分类，包含二级分类
+        :param categoryId:商品分类Id
+        :param name:商品分类名称，长度需在50字以内
+        :param parentId:父分类ID，如果没有可以填0
+        :param description:商品分类描述，长度需在50字以内
+        """
+        return self.__client.call("eleme.product.category.updateCategoryWithChildren", {"categoryId": category_id, "name": name, "parentId": parent_id, "description": description})
+
+    def remove_category(self, category_id):
+        """
+        删除商品分类
+        :param categoryId:商品分类Id
+        """
+        return self.__client.call("eleme.product.category.removeCategory", {"categoryId": category_id})
+
+    def invalid_category(self, category_id):
+        """
+        删除商品分类(新版)
+        :param categoryId:商品分类Id
+        """
+        return self.__client.call("eleme.product.category.invalidCategory", {"categoryId": category_id})
+
+    def set_category_positions(self, shop_id, category_ids):
+        """
+        设置分类排序
+        :param shopId:饿了么店铺Id
+        :param categoryIds:需要排序的分类Id
+        """
+        return self.__client.call("eleme.product.category.setCategoryPositions", {"shopId": shop_id, "categoryIds": category_ids})
+
+    def set_category_sequence(self, shop_id, category_ids):
+        """
+        设置分类排序(新版)
+        :param shopId:饿了么店铺Id
+        :param categoryIds:需要排序的全部一级分类Id
+        """
+        return self.__client.call("eleme.product.category.setCategorySequence", {"shopId": shop_id, "categoryIds": category_ids})
+
+    def set_category_positions_with_children(self, shop_id, category_with_children_ids):
+        """
+        设置二级分类排序
+        :param shopId:饿了么店铺Id
+        :param categoryWithChildrenIds:需要排序的父分类Id，及其下属的二级分类ID
+        """
+        return self.__client.call("eleme.product.category.setCategoryPositionsWithChildren", {"shopId": shop_id, "categoryWithChildrenIds": category_with_children_ids})
+
+    def get_back_category(self, shop_id):
+        """
+        查询商品后台类目
+        :param shopId:店铺Id
+        """
+        return self.__client.call("eleme.product.category.getBackCategory", {"shopId": shop_id})
+
+    def set_category_type(self, shop_id, category_id, category_type):
+        """
+        设置分类类型
+        :param shopId:店铺Id
+        :param categoryId:商品分类Id
+        :param categoryType:分类类型
+        """
+        return self.__client.call("eleme.product.category.setCategoryType", {"shopId": shop_id, "categoryId": category_id, "categoryType": category_type})
+
+    def set_day_parting_stick_time(self, shop_id, category_id, day_parting_stick):
+        """
+        设置分组分时段置顶
+        :param shopId:店铺Id
+        :param categoryId:商品分类Id
+        :param dayPartingStick:置顶时间设置
+        """
+        return self.__client.call("eleme.product.category.setDayPartingStickTime", {"shopId": shop_id, "categoryId": category_id, "dayPartingStick": day_parting_stick})
+
+    def remove_day_parting_stick_time(self, shop_id, category_id):
+        """
+        删除分组的分时置顶功能
+        :param shopId:店铺Id
+        :param categoryId:商品分类Id
+        """
+        return self.__client.call("eleme.product.category.removeDayPartingStickTime", {"shopId": shop_id, "categoryId": category_id})
+
+    def create_package(self, category_id, o_package):
+        """
+        添加套餐
+        :param categoryId:分类Id
+        :param oPackage:套餐属性
+        """
+        return self.__client.call("eleme.product.package.createPackage", {"categoryId": category_id, "oPackage": o_package})
+
+    def update_package_content(self, item_id, category_id, update):
+        """
+        修改套餐基本信息
+        :param itemId:新套餐id即OItem中的商品Id
+        :param categoryId:分类Id即OCategory中的分类Id
+        :param update:套餐基本信息
+        """
+        return self.__client.call("eleme.product.package.updatePackageContent", {"itemId": item_id, "categoryId": category_id, "update": update})
+
+    def update_package_relation(self, item_id, packages):
+        """
+        修改套餐和主料的关联关系
+        :param itemId:新套餐id即OItem中的商品Id
+        :param packages:套餐关系
+        """
+        return self.__client.call("eleme.product.package.updatePackageRelation", {"itemId": item_id, "packages": packages})
+
+    def remove_package(self, item_id):
+        """
+        删除套餐
+        :param itemId:套餐Id
+        """
+        return self.__client.call("eleme.product.package.removePackage", {"itemId": item_id})
 
     def get_items_by_category_id(self, category_id):
         """
@@ -73,6 +333,14 @@ class ProductService:
         :param items:商品属性的列表
         """
         return self.__client.call("eleme.product.item.batchCreateItems", {"categoryId": category_id, "items": items})
+
+    def batch_create_items_ignore_error(self, category_id, items):
+        """
+        批量添加商品,且忽略异常,专为星巴克开发
+        :param categoryId:商品分类Id
+        :param items:商品属性的列表
+        """
+        return self.__client.call("eleme.product.item.batchCreateItemsIgnoreError", {"categoryId": category_id, "items": items})
 
     def update_item(self, item_id, category_id, properties):
         """
@@ -319,172 +587,107 @@ class ProductService:
         """
         return self.__client.call("eleme.product.item.removeIngredientGroup", {"itemId": item_id})
 
-    def get_shop_categories(self, shop_id):
+    def batch_get_item(self, iids):
         """
-        查询店铺商品分类
-        :param shopId:店铺Id
+        批量查询连锁总店商品信息
+        :param iids:连锁总店商品Id列表
         """
-        return self.__client.call("eleme.product.category.getShopCategories", {"shopId": shop_id})
+        return self.__client.call("eleme.product.chain.item.batchGetItem", {"iids": iids})
 
-    def get_shop_categories_with_children(self, shop_id):
+    def batch_create_item(self, gid, chain_item_base_d_t_os):
         """
-        查询店铺商品分类，包含二级分类
-        :param shopId:店铺Id
+        批量添加连锁总店商品
+        :param gid:连锁总店商品分组Id
+        :param chainItemBaseDTOs:商品创建信息列表
         """
-        return self.__client.call("eleme.product.category.getShopCategoriesWithChildren", {"shopId": shop_id})
+        return self.__client.call("eleme.product.chain.item.batchCreateItem", {"gid": gid, "chainItemBaseDTOs": chain_item_base_d_t_os})
 
-    def get_category(self, category_id):
+    def replace_item(self, gid, chain_item_d_t_o):
         """
-        查询商品分类详情
-        :param categoryId:商品分类Id
+        替换连锁总店商品
+        :param gid:商品分组Id
+        :param chainItemDTO:商品替换信息
         """
-        return self.__client.call("eleme.product.category.getCategory", {"categoryId": category_id})
+        return self.__client.call("eleme.product.chain.item.replaceItem", {"gid": gid, "chainItemDTO": chain_item_d_t_o})
 
-    def get_category_with_children(self, category_id):
+    def batch_replace_item(self, gid, chain_item_d_t_os):
         """
-        查询商品分类详情，包含二级分类
-        :param categoryId:商品分类Id
+        批量替换连锁总店商品
+        :param gid:商品分组Id
+        :param chainItemDTOs:商品替换信息列表
         """
-        return self.__client.call("eleme.product.category.getCategoryWithChildren", {"categoryId": category_id})
+        return self.__client.call("eleme.product.chain.item.batchReplaceItem", {"gid": gid, "chainItemDTOs": chain_item_d_t_os})
 
-    def create_category(self, shop_id, name, description):
+    def update_item_without_sku(self, iid, chain_item_base_d_t_o):
         """
-        添加商品分类
-        :param shopId:店铺Id
-        :param name:商品分类名称，长度需在50字以内
-        :param description:商品分类描述，长度需在50字以内
+        更新连锁总店商品不包含规格信息
+        :param iid:连锁总店商品Id
+        :param chainItemBaseDTO:商品更新信息
         """
-        return self.__client.call("eleme.product.category.createCategory", {"shopId": shop_id, "name": name, "description": description})
+        return self.__client.call("eleme.product.chain.item.updateItemWithoutSku", {"iid": iid, "chainItemBaseDTO": chain_item_base_d_t_o})
 
-    def create_category_with_children(self, shop_id, name, parent_id, description):
+    def delete_item(self, iid):
         """
-        添加商品分类，支持二级分类
-        :param shopId:店铺Id
-        :param name:商品分类名称，长度需在50字以内
-        :param parentId:父分类ID，如果没有可以填0
-        :param description:商品分类描述，长度需在50字以内
+        删除连锁总店商品
+        :param iid:连锁总店商品Id
         """
-        return self.__client.call("eleme.product.category.createCategoryWithChildren", {"shopId": shop_id, "name": name, "parentId": parent_id, "description": description})
+        return self.__client.call("eleme.product.chain.item.deleteItem", {"iid": iid})
 
-    def update_category(self, category_id, name, description):
+    def get_sku(self, p_id):
         """
-        更新商品分类
-        :param categoryId:商品分类Id
-        :param name:商品分类名称，长度需在50字以内
-        :param description:商品分类描述，长度需在50字以内
+        查询连锁总店商品规格
+        :param pId:连锁总店商品规格Id
         """
-        return self.__client.call("eleme.product.category.updateCategory", {"categoryId": category_id, "name": name, "description": description})
+        return self.__client.call("eleme.product.chain.item.getSku", {"pId": p_id})
 
-    def update_category_with_children(self, category_id, name, parent_id, description):
+    def add_sku(self, iid, chain_sku_base_d_t_o):
         """
-        更新商品分类，包含二级分类
-        :param categoryId:商品分类Id
-        :param name:商品分类名称，长度需在50字以内
-        :param parentId:父分类ID，如果没有可以填0
-        :param description:商品分类描述，长度需在50字以内
+        新增连锁总店商品规格
+        :param iid:连锁总店商品Id
+        :param chainSkuBaseDTO:添加规格信息
         """
-        return self.__client.call("eleme.product.category.updateCategoryWithChildren", {"categoryId": category_id, "name": name, "parentId": parent_id, "description": description})
+        return self.__client.call("eleme.product.chain.item.addSku", {"iid": iid, "chainSkuBaseDTO": chain_sku_base_d_t_o})
 
-    def remove_category(self, category_id):
+    def update_sku(self, p_id, chain_sku_base_d_t_o):
         """
-        删除商品分类
-        :param categoryId:商品分类Id
+        更新连锁总店商品规格
+        :param pId:连锁总店商品规格Id
+        :param chainSkuBaseDTO:规格更新信息
         """
-        return self.__client.call("eleme.product.category.removeCategory", {"categoryId": category_id})
+        return self.__client.call("eleme.product.chain.item.updateSku", {"pId": p_id, "chainSkuBaseDTO": chain_sku_base_d_t_o})
 
-    def invalid_category(self, category_id):
+    def delete_sku(self, p_id):
         """
-        删除商品分类(新版)
-        :param categoryId:商品分类Id
+        删除连锁总店商品规格
+        :param pId:连锁总店商品规格Id
         """
-        return self.__client.call("eleme.product.category.invalidCategory", {"categoryId": category_id})
+        return self.__client.call("eleme.product.chain.item.deleteSku", {"pId": p_id})
 
-    def set_category_positions(self, shop_id, category_ids):
+    def upload_image(self, image):
         """
-        设置分类排序
-        :param shopId:饿了么店铺Id
-        :param categoryIds:需要排序的分类Id
+        上传图片，返回图片的hash值
+        :param image:文件内容base64编码值
         """
-        return self.__client.call("eleme.product.category.setCategoryPositions", {"shopId": shop_id, "categoryIds": category_ids})
+        return self.__client.call("eleme.file.uploadImage", {"image": image})
 
-    def set_category_sequence(self, shop_id, category_ids):
+    def upload_image_with_remote_url(self, url):
         """
-        设置分类排序(新版)
-        :param shopId:饿了么店铺Id
-        :param categoryIds:需要排序的全部一级分类Id
+        通过远程URL上传图片，返回图片的hash值
+        :param url:远程Url地址
         """
-        return self.__client.call("eleme.product.category.setCategorySequence", {"shopId": shop_id, "categoryIds": category_ids})
+        return self.__client.call("eleme.file.uploadImageWithRemoteUrl", {"url": url})
 
-    def set_category_positions_with_children(self, shop_id, category_with_children_ids):
+    def get_uploaded_url(self, hash):
         """
-        设置二级分类排序
-        :param shopId:饿了么店铺Id
-        :param categoryWithChildrenIds:需要排序的父分类Id，及其下属的二级分类ID
+        获取上传文件的访问URL，返回文件的Url地址
+        :param hash:图片hash值
         """
-        return self.__client.call("eleme.product.category.setCategoryPositionsWithChildren", {"shopId": shop_id, "categoryWithChildrenIds": category_with_children_ids})
+        return self.__client.call("eleme.file.getUploadedUrl", {"hash": hash})
 
-    def get_back_category(self, shop_id):
+    def get_image_url(self, hash):
         """
-        查询商品后台类目
-        :param shopId:店铺Id
+        获取上传图片的url地址(新版)
+        :param hash:图片hash值
         """
-        return self.__client.call("eleme.product.category.getBackCategory", {"shopId": shop_id})
-
-    def set_category_type(self, shop_id, category_id, category_type):
-        """
-        设置分类类型
-        :param shopId:店铺Id
-        :param categoryId:商品分类Id
-        :param categoryType:分类类型
-        """
-        return self.__client.call("eleme.product.category.setCategoryType", {"shopId": shop_id, "categoryId": category_id, "categoryType": category_type})
-
-    def set_day_parting_stick_time(self, shop_id, category_id, day_parting_stick):
-        """
-        设置分组分时段置顶
-        :param shopId:店铺Id
-        :param categoryId:商品分类Id
-        :param dayPartingStick:置顶时间设置
-        """
-        return self.__client.call("eleme.product.category.setDayPartingStickTime", {"shopId": shop_id, "categoryId": category_id, "dayPartingStick": day_parting_stick})
-
-    def remove_day_parting_stick_time(self, shop_id, category_id):
-        """
-        删除分组的分时置顶功能
-        :param shopId:店铺Id
-        :param categoryId:商品分类Id
-        """
-        return self.__client.call("eleme.product.category.removeDayPartingStickTime", {"shopId": shop_id, "categoryId": category_id})
-
-    def create_package(self, category_id, o_package):
-        """
-        添加套餐
-        :param categoryId:分类Id
-        :param oPackage:套餐属性
-        """
-        return self.__client.call("eleme.product.package.createPackage", {"categoryId": category_id, "oPackage": o_package})
-
-    def update_package_content(self, item_id, category_id, update):
-        """
-        修改套餐基本信息
-        :param itemId:新套餐id即OItem中的商品Id
-        :param categoryId:分类Id即OCategory中的分类Id
-        :param update:套餐基本信息
-        """
-        return self.__client.call("eleme.product.package.updatePackageContent", {"itemId": item_id, "categoryId": category_id, "update": update})
-
-    def update_package_relation(self, item_id, packages):
-        """
-        修改套餐和主料的关联关系
-        :param itemId:新套餐id即OItem中的商品Id
-        :param packages:套餐关系
-        """
-        return self.__client.call("eleme.product.package.updatePackageRelation", {"itemId": item_id, "packages": packages})
-
-    def remove_package(self, item_id):
-        """
-        删除套餐
-        :param itemId:套餐Id
-        """
-        return self.__client.call("eleme.product.package.removePackage", {"itemId": item_id})
+        return self.__client.call("eleme.file.getImageUrl", {"hash": hash})
 
