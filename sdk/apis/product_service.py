@@ -587,51 +587,66 @@ class ProductService:
         """
         return self.__client.call("eleme.product.item.removeIngredientGroup", {"itemId": item_id})
 
-    def batch_get_item(self, iids):
+    def get_chain_item(self, iid):
+        """
+        查询连锁总店商品信息
+        :param iid:连锁总店商品Id
+        """
+        return self.__client.call("eleme.product.chain.item.getChainItem", {"iid": iid})
+
+    def batch_get_chain_item(self, iids):
         """
         批量查询连锁总店商品信息
         :param iids:连锁总店商品Id列表
         """
-        return self.__client.call("eleme.product.chain.item.batchGetItem", {"iids": iids})
+        return self.__client.call("eleme.product.chain.item.batchGetChainItem", {"iids": iids})
 
-    def batch_create_item(self, gid, chain_item_base_d_t_os):
+    def create_chain_item(self, gid, chain_item_base_d_t_o):
+        """
+        添加连锁总店商品
+        :param gid:连锁总店商品分组Id
+        :param chainItemBaseDTO:商品创建信息
+        """
+        return self.__client.call("eleme.product.chain.item.createChainItem", {"gid": gid, "chainItemBaseDTO": chain_item_base_d_t_o})
+
+    def batch_create_chain_item(self, gid, chain_item_base_d_t_os):
         """
         批量添加连锁总店商品
         :param gid:连锁总店商品分组Id
         :param chainItemBaseDTOs:商品创建信息列表
         """
-        return self.__client.call("eleme.product.chain.item.batchCreateItem", {"gid": gid, "chainItemBaseDTOs": chain_item_base_d_t_os})
+        return self.__client.call("eleme.product.chain.item.batchCreateChainItem", {"gid": gid, "chainItemBaseDTOs": chain_item_base_d_t_os})
 
-    def replace_item(self, gid, chain_item_d_t_o):
+    def replace_chain_item(self, gid, chain_item_d_t_o):
         """
         替换连锁总店商品
         :param gid:商品分组Id
         :param chainItemDTO:商品替换信息
         """
-        return self.__client.call("eleme.product.chain.item.replaceItem", {"gid": gid, "chainItemDTO": chain_item_d_t_o})
+        return self.__client.call("eleme.product.chain.item.replaceChainItem", {"gid": gid, "chainItemDTO": chain_item_d_t_o})
 
-    def batch_replace_item(self, gid, chain_item_d_t_os):
+    def batch_replace_chain_item(self, gid, chain_item_d_t_os):
         """
         批量替换连锁总店商品
         :param gid:商品分组Id
         :param chainItemDTOs:商品替换信息列表
         """
-        return self.__client.call("eleme.product.chain.item.batchReplaceItem", {"gid": gid, "chainItemDTOs": chain_item_d_t_os})
+        return self.__client.call("eleme.product.chain.item.batchReplaceChainItem", {"gid": gid, "chainItemDTOs": chain_item_d_t_os})
 
-    def update_item_without_sku(self, iid, chain_item_base_d_t_o):
+    def update_chain_item_without_sku(self, iid, chain_item_base_d_t_o):
         """
         更新连锁总店商品不包含规格信息
         :param iid:连锁总店商品Id
         :param chainItemBaseDTO:商品更新信息
         """
-        return self.__client.call("eleme.product.chain.item.updateItemWithoutSku", {"iid": iid, "chainItemBaseDTO": chain_item_base_d_t_o})
+        return self.__client.call("eleme.product.chain.item.updateChainItemWithoutSku", {"iid": iid, "chainItemBaseDTO": chain_item_base_d_t_o})
 
-    def delete_item(self, iid):
+    def delete_chain_item(self, iid):
         """
         删除连锁总店商品
         :param iid:连锁总店商品Id
         """
-        return self.__client.call("eleme.product.chain.item.deleteItem", {"iid": iid})
+        return self.__client.call("eleme.product.chain.item.deleteChainItem", {"iid": iid})
 
     def get_sku(self, p_id):
         """

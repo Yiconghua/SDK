@@ -175,6 +175,10 @@
 
 
 ## CHANGELOG:
+### [1.25.2]
+Release Date : 2019-1-3
+- [Feature] 商品服务新增更新接口
+
 ### [1.25.1]
 Release Date : 2018-12-28
 - [Feature] 商品服务新增接口
