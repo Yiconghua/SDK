@@ -51,7 +51,7 @@
   - 第五️步 通过code获取token对象,此步获取到的token对象可在有效期内一直使用，不用每次调用前都去获取一次，建议应用授权一次后存放到全局缓存中
 
 ```python
-    token = oauth_client.get_token_by_code(code)
+    token = oauth_client.get_token_by_auth_code(code)
 ```
 
   - 第六步 实例化远程调用的client对象
@@ -175,6 +175,10 @@
 
 
 ## CHANGELOG:
+### [1.25.3]
+Release Date : 2019-2-22
+- [Feature] 餐厅入口流量服务下线接口
+
 ### [1.25.2]
 Release Date : 2019-1-3
 - [Feature] 商品服务新增更新接口
