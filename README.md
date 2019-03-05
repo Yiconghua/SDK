@@ -175,6 +175,10 @@
 
 
 ## CHANGELOG:
+### [1.25.4]
+Release Date : 2019-3-5
+- [Feature] 商品服务新增接口
+
 ### [1.25.3]
 Release Date : 2019-2-22
 - [Feature] 餐厅入口流量服务下线接口
