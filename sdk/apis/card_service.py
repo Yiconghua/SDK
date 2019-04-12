@@ -77,3 +77,10 @@ class CardService:
         """
         return self.__client.call("eleme.card.getUserByToken", {"userToken": user_token})
 
+    def confirm_send_coupon(self, coupon_request):
+        """
+        确认是否发券接口
+        :param couponRequest:是否发券请求
+        """
+        return self.__client.call("eleme.card.confirmSendCoupon", {"couponRequest": coupon_request})
+

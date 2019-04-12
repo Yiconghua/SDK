@@ -175,6 +175,10 @@
 
 
 ## CHANGELOG:
+### [1.25.5]
+Release Date : 2019-4-12
+- [Feature] 商户会员卡服务新增接口
+
 ### [1.25.4]
 Release Date : 2019-3-5
 - [Feature] 商品服务新增接口
