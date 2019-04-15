@@ -175,6 +175,10 @@
 
 
 ## CHANGELOG:
+### [1.25.6]
+Release Date : 2019-4-15
+- [Feature] 活动服务新增接口
+
 ### [1.25.5]
 Release Date : 2019-4-12
 - [Feature] 商户会员卡服务新增接口

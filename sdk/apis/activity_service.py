@@ -275,6 +275,13 @@ class ActivityService:
         """
         return self.__client.call("eleme.activity.coupon.updateCouponStatus", {"criteria": criteria, "type": type})
 
+    def query_order_subsidy(self, order_id):
+        """
+        查询订单内营销相关数据
+        :param orderId:饿了么订单Id
+        """
+        return self.__client.call("eleme.activity.marketing.queryOrderSubsidy", {"orderId": order_id})
+
     def create_and_participate_chain_price_activity(self, activity, chain_id, shop_apply_info):
         """
         创建并绑定连锁店特价活动
