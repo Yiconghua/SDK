@@ -130,22 +130,6 @@ class ActivityService:
         """
         return self.__client.call("eleme.activity.food.unbindFoodActivity", {"activityId": activity_id, "shopId": shop_id})
 
-    def create_coupon_activity(self, create_info):
-        """
-        创建红包活动(即将下线)
-        :param createInfo:创建红包活动的结构体
-        """
-        return self.__client.call("eleme.activity.coupon.createCouponActivity", {"createInfo": create_info})
-
-    def give_out_coupons(self, shop_id, coupon_activity_id, mobiles):
-        """
-        向指定用户发放红包(即将下线)
-        :param shopId:店铺Id
-        :param couponActivityId:红包活动Id
-        :param mobiles:需要发放红包的用户手机号列表
-        """
-        return self.__client.call("eleme.activity.coupon.giveOutCoupons", {"shopId": shop_id, "couponActivityId": coupon_activity_id, "mobiles": mobiles})
-
     def present_coupon(self, shop_id, mobile, coupon_template):
         """
         定向赠红包
@@ -154,28 +138,6 @@ class ActivityService:
         :param couponTemplate:定向赠红包的模板信息
         """
         return self.__client.call("eleme.activity.coupon.presentCoupon", {"shopId": shop_id, "mobile": mobile, "couponTemplate": coupon_template})
-
-    def query_coupon_activities(self, shop_id, coupon_activity_type, activity_status, page_no, page_size):
-        """
-        分页查询店铺红包活动信息(即将下线)
-        :param shopId:店铺Id
-        :param couponActivityType:红包活动类型
-        :param activityStatus:活动状态
-        :param pageNo:页码（第几页）
-        :param pageSize:每页数量
-        """
-        return self.__client.call("eleme.activity.coupon.queryCouponActivities", {"shopId": shop_id, "couponActivityType": coupon_activity_type, "activityStatus": activity_status, "pageNo": page_no, "pageSize": page_size})
-
-    def query_received_coupon_details(self, shop_id, coupon_activity_id, coupon_status, page_no, page_size):
-        """
-        分页查询店铺红包领取详情(即将下线)
-        :param shopId:店铺Id
-        :param couponActivityId:红包活动Id
-        :param couponStatus:红包状态
-        :param pageNo:页码（第几页）
-        :param pageSize:每页数量
-        """
-        return self.__client.call("eleme.activity.coupon.queryReceivedCouponDetails", {"shopId": shop_id, "couponActivityId": coupon_activity_id, "couponStatus": coupon_status, "pageNo": page_no, "pageSize": page_size})
 
     def host_shops(self, shop_ids, hosted_type, discounts):
         """
