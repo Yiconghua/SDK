@@ -119,6 +119,13 @@ class ShopService:
         """
         return self.__client.call("eleme.shop.getShopVocation", {"shopId": shop_id})
 
+    def get_shop_license(self, shop_id):
+        """
+        查询店铺主体资质信息
+        :param shopId:店铺id
+        """
+        return self.__client.call("eleme.shop.getShopLicense", {"shopId": shop_id})
+
     def submit_open_store_message_audit(self, open_store_message):
         """
         提交开店申请接口

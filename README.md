@@ -175,6 +175,10 @@
 
 
 ## CHANGELOG:
+### [1.25.8]
+Release Date : 2019-5-24
+- [Feature] 店铺服务新增接口
+
 ### [1.25.7]
 Release Date : 2019-5-10
 - [Feature] 活动服务下线接口
