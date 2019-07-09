@@ -23,3 +23,10 @@ class MessageService:
         """
         return self.__client.call("eleme.message.getNonReachedOMessages", {"appId": app_id})
 
+    def query_failed_message_log(self, request):
+        """
+        获取http推送失败的消息
+        :param request:查询推送失败消息日志结构体
+        """
+        return self.__client.call("eleme.message.queryFailedMessageLog", {"request": request})
+
