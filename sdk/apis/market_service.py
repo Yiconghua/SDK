@@ -33,3 +33,10 @@ class MarketService:
         """
         return self.__client.call("eleme.market.queryOrder", {"orderNo": order_no})
 
+    def confirm_order(self, order_no):
+        """
+        服务市场确认订单
+        :param orderNo:服务市场订单编号
+        """
+        return self.__client.call("eleme.market.confirmOrder", {"orderNo": order_no})
+

@@ -175,6 +175,10 @@
 
 
 ## CHANGELOG:
+### [1.26.2]
+Release Date : 2019-7-19
+- [Feature] 服务市场服务新增接口
+
 ### [1.26.1]
 Release Date : 2019-7-9
 - [Feature] 消息服务新增接口
