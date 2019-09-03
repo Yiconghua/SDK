@@ -175,6 +175,10 @@
 
 
 ## CHANGELOG:
+### [1.26.3]
+Release Date : 2019-9-02
+- [Feature] 新增经营体检服务
+
 ### [1.26.2]
 Release Date : 2019-7-19
 - [Feature] 服务市场服务新增接口
