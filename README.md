@@ -175,6 +175,10 @@
 
 
 ## CHANGELOG:
+### [1.26.4]
+Release Date : 2019-9-26
+- [Feature] 活动服务下线接口
+
 ### [1.26.3]
 Release Date : 2019-9-02
 - [Feature] 新增经营体检服务
