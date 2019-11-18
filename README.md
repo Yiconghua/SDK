@@ -175,6 +175,10 @@
 
 
 ## CHANGELOG:
+### [1.26.5]
+Release Date : 2019-11-18
+- [Feature] 新增商户信用分服务，订单服务更新接口
+
 ### [1.26.4]
 Release Date : 2019-9-26
 - [Feature] 活动服务下线接口
