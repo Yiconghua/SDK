@@ -18,11 +18,19 @@ class ShopService:
 
     def update_shop(self, shop_id, properties):
         """
-        更新店铺基本信息
+        更新店铺信息
         :param shopId:店铺Id
         :param properties:店铺属性
         """
         return self.__client.call("eleme.shop.updateShop", {"shopId": shop_id, "properties": properties})
+
+    def update_shop_basic_info(self, shop_id, properties):
+        """
+        更新店铺基本信息
+        :param shopId:店铺Id
+        :param properties:店铺基本属性
+        """
+        return self.__client.call("eleme.shop.updateShopBasicInfo", {"shopId": shop_id, "properties": properties})
 
     def mget_shop_status(self, shop_ids):
         """

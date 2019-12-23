@@ -175,6 +175,10 @@
 
 
 ## CHANGELOG:
+### [1.26.6]
+Release Date : 2019-12-23
+- [Feature] 店铺服务新增接口
+
 ### [1.26.5]
 Release Date : 2019-11-18
 - [Feature] 新增商户信用分服务，订单服务更新接口
