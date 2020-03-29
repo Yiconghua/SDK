@@ -175,6 +175,10 @@
 
 
 ## CHANGELOG:
+### [1.26.8]
+Release Date : 2020-03-30
+- [Feature] 商品服务新增接口
+
 ### [1.26.7]
 Release Date : 2019-12-27
 - [Feature] 金融服务新增接口
